@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme inline {
+    --font-sans: var(--font-sans), -apple-system, sans-serif;
+    --font-accent: var(--font-accent), serif;
+}
+
+@theme {
+    --color-primary: #769283;
+    --color-primary-dark: #2c3d33;
+    --color-primary-light: #c0c3b8;
+    --color-cream: #f7f3e9;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: #2c3d33;
+    background: #ffffff;
+}
