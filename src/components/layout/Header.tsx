@@ -1,7 +1,17 @@
 export default function Header() {
     return (
-        <div>
-            <div></div>
-        </div>
+        <header className="">
+            {/* pc */}
+            <div>
+                <div></div>
+            </div>
+
+            {/* 모바일 */}
+            <div>
+                <div>
+                    
+                </div>
+            </div>
+        </header>
     );
 }
