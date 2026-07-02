@@ -22,7 +22,8 @@ export const metadata: Metadata = {
     openGraph: {
         title: '서울NEW치과',
         description: '정확한 진단과 따뜻한 진료로 함께하는 서울NEW치과',
-        url: 'https://실제도메인.com',
+        // #LINK: 링크 변경 필요
+        url: 'https://seoulnewdental.vercel.app/',
         siteName: '서울NEW치과',
         locale: 'ko_KR',
         type: 'website',
