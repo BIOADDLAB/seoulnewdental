@@ -43,8 +43,18 @@ export default function Header() {
                 <div className="mx-auto flex h-[60px] max-w-[1400px] items-center justify-between pl-[30px] pr-[22px] lg:h-[95px] lg:px-10">
                     {/* 로고 영역 */}
                     <Link href="/" className="flex items-center gap-1.5 lg:gap-2">
-                        <Image
+                        {/* #ISSUE: svg 렌더링 시 흐림 현상 발생하여 고해상도 png로 대체함 
+                        - 기존 Image 태그는 주석 처리하여 롤백 가능하도록 유지*/}
+
+                        {/* <Image
                             src="/images/logo_w.svg"
+                            alt="서울NEW치과 로고"
+                            width={37}
+                            height={41}
+                            className="h-[38px] w-[34px] object-contain lg:h-[41px] lg:w-[37px]"
+                        /> */}
+                        <Image
+                            src="/images/logo_w_x4.png"
                             alt="서울NEW치과 로고"
                             width={37}
                             height={41}
@@ -125,8 +135,17 @@ export default function Header() {
                         {/* 로고 */}
                         <div className="flex items-center pl-[30px] pt-[100px]">
                             <Link href="/" onClick={handleClose} className="flex items-center gap-1.5">
-                                <Image
+                                {/* #ISSUE: svg 렌더링 시 흐림 현상 발생하여 고해상도 png로 대체함 
+                                 - 기존 Image 태그는 주석 처리하여 롤백 가능하도록 유지*/}
+                                {/* <Image
                                     src="/images/logo_b.svg"
+                                    alt="서울NEW치과 로고"
+                                    width={32}
+                                    height={32}
+                                    className="h-[38px] w-[34px] object-contain"
+                                /> */}
+                                <Image
+                                    src="/images/logo_b_x4.png"
                                     alt="서울NEW치과 로고"
                                     width={32}
                                     height={32}

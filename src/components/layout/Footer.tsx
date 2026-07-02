@@ -7,8 +7,17 @@ export default function Footer() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* 로고 및 병원명 영역 */}
                 <div className="mb-3.75 flex items-center justify-center gap-3 lg:mb-6.25">
-                    <Image
+                    {/* #ISSUE: svg 렌더링 시 흐림 현상 발생하여 고해상도 png로 대체함 
+                    - 기존 Image 태그는 주석 처리하여 롤백 가능하도록 유지*/}
+                    {/* <Image
                         src="/images/logo_w.svg"
+                        alt={`${HOSPITAL_INFO.name} 로고`}
+                        width={37}
+                        height={41}
+                        className="h-[31.8px] w-[28.14px] object-contain lg:h-[41px] lg:w-[37px]"
+                    /> */}
+                    <Image
+                        src="/images/logo_w_x4.png"
                         alt={`${HOSPITAL_INFO.name} 로고`}
                         width={37}
                         height={41}
