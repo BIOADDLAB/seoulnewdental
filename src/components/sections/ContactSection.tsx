@@ -69,7 +69,9 @@ export default function ContactSection() {
                     <div className="mb-[24px] w-full lg:w-full lg:max-w-[727px] lg:shrink lg:mb-0">
                         <div className="block w-full h-[154px] sm:h-[220px] lg:h-full bg-[#d9d9d9] rounded-[10px] relative">
                             <a
-                                href="dsfjoidsjido"
+                                href="https://maps.google.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex justify-center items-center w-[98px] h-[30px] rounded-[7px] border border-black bg-white absolute bottom-[20px] right-[20px]"
                             >
                                 <img src="/images/i_map_google.svg" className="w-[14px] h-auto" alt="구글지도 아이콘" />

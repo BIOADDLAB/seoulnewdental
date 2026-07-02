@@ -1,9 +1,11 @@
 import SectionHeading from '@/components/common/SectionHeading';
 import ContactSection from '@/components/sections/ContactSection';
+import SubPageHero from '@/components/sections/SubPageHero';
 
 export default function Home() {
     return (
         <main>
+            <SubPageHero title="ddd" desc="dddhsdi" bgImageName="bg_sub_01" />
             <ContactSection />
             <SectionHeading
                 subtitle="SERVICES"
