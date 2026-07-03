@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import FloatingButton from '@/components/common/FloatingButton';
 
 const suit = localFont({
     src: '../../public/fonts/SUIT-Variable.ttf',
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Header />
                 {children}
                 <Footer />
+                <FloatingButton />
             </body>
         </html>
     );
