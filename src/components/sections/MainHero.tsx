@@ -105,12 +105,44 @@ export default function MainHero() {
                             />
                         </div>
 
-                        {/* 텍스트 콘텐츠 영역 (헤더와 동일한 패딩 및 최대 너비 적용) */}
-                        <div
-                            className={`relative z-10 mx-auto max-w-[1400px] h-full flex flex-col ${
-                                slide.strongText ? 'pt-[230px]' : 'pt-[290px]'
+                        {/* #ISSUE: 모바일에서만 맵솔루트 시키고 리팩토링때 확인 기존 코드 주석처리 - 추후 삭제 예정
+                         */}
+                        {/* <div
+                            className={`absolute w-full top-[94%] left-1/2 -translate-x-1/2 -translate-y-1/2  z-10 mx-auto max-w-[1400px] h-full flex flex-col ${
+                                slide.strongText ? 'pt-[2px]' : 'pt-[2px]'
                             } md:pt-0 md:justify-center px-[20px] md:px-[40px] lg:px-10`}
                         >
+                            <div className="hero-anim flex flex-col items-center text-center md:items-start md:text-left text-white md:text-[#776B5D]">
+                                <span className="font-accent text-[15px] md:text-[35px] uppercase opacity-80">
+                                    {slide.subtitle}
+                                </span>
+                                <h2 className="text-[25px]/[37px] md:text-[30px]/[45px] font-semibold whitespace-pre-line break-keep mt-3 md:mt-5.5 tracking-tight">
+                                    {slide.title}
+                                </h2>
+                                {slide.strongText && (
+                                    <strong className="block text-[25px]/[37px] md:text-[30px]/[45px] font-bold mt-2 md:mt-[22px]">
+                                        {slide.strongText}
+                                    </strong>
+                                )}
+                                <Link
+                                    href="/about"
+                                    className="w-[176px] h-[55px] flex justify-center items-center border border-white rounded-full text-[20px] font-bold mt-[29px] md:mt-[42px] md:w-[165px] md:h-[52px] md:border-[#776b5d]"
+                                >
+                                    Introduction
+                                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={1.5}
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </div> */}
+
+                        {/* 텍스트 콘텐츠 영역 */}
+                        <div className="absolute top-[94%] left-1/2 w-full -translate-x-1/2 -translate-y-1/2 z-10 mx-auto max-w-[1400px] h-full flex flex-col px-[20px] md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 md:pt-0 md:justify-center md:px-[40px] lg:px-10">
                             <div className="hero-anim flex flex-col items-center text-center md:items-start md:text-left text-white md:text-[#776B5D]">
                                 <span className="font-accent text-[15px] md:text-[35px] uppercase opacity-80">
                                     {slide.subtitle}
