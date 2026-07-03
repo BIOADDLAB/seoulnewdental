@@ -1,5 +1,5 @@
-// #ISSUE: 모바일 슬라이드 이미지 고정 버그 수정
-// #STYLE: Swiper 기반 메인 히어로, 모바일/PC 이미지 개별 매핑 및 라운드 디테일 적용
+// #ISSUE: PC 해상도(1024px~1400px)에서 헤더 로고와 히어로 텍스트의 좌측 정렬 어긋남, 태블릿 구간(520px~767px) 이미지 잘림 현상
+// #STYLE: 텍스트 및 프로그레스바 컨테이너를 헤더와 동일하게 max-w-[1400px] 및 lg:px-10으로 통일, min-[520px]로 모바일 이미지 상단 고정
 // #LINK: npm install swiper
 'use client';
 
@@ -32,7 +32,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         pcImage: '/images/hero_pc_x2_01.jpg',
         moImage: '/images/hero_mo_x2_01.jpg',
         pcImagePos: 'lg:object-[75%_center]',
-        moImagePos: 'object-[65%_center]',
+        moImagePos: 'object-[65%_center] min-[520px]:object-[65%_top]',
     },
     {
         id: 2,
@@ -41,7 +41,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         pcImage: '/images/hero_pc_x2_02.jpg',
         moImage: '/images/hero_mo_x2_02.jpg',
         pcImagePos: 'lg:object-[80%_center]',
-        moImagePos: 'object-[75%_center]',
+        moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
     },
     {
         id: 3,
@@ -51,7 +51,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         pcImage: '/images/hero_pc_x2_03.jpg',
         moImage: '/images/hero_mo_x2_03.jpg',
         pcImagePos: 'lg:object-[80%_center]',
-        moImagePos: 'object-[75%_center]',
+        moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
     },
     {
         id: 4,
@@ -60,7 +60,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         pcImage: '/images/hero_pc_x2_04.jpg',
         moImage: '/images/hero_mo_x2_04.jpg',
         pcImagePos: 'lg:object-[80%_center]',
-        moImagePos: 'object-[75%_center]',
+        moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
     },
 ];
 
@@ -77,55 +77,55 @@ export default function MainHero() {
                 autoplay={{ delay: 4000, disableOnInteraction: false }}
                 loop={true}
                 onSlideChange={(swiper: SwiperClass) => setActiveIndex(swiper.realIndex)}
-                className="w-full h-[calc(100vh-60px)] lg:h-[800px] rounded-tr-[20px] lg:rounded-tr-[70px] overflow-hidden"
+                className="w-full h-[672px] lg:h-[800px] rounded-tr-[20px] lg:rounded-tr-[70px] overflow-hidden"
             >
                 {HERO_SLIDES.map((slide) => (
                     <SwiperSlide key={slide.id} className="relative w-full h-full overflow-hidden">
-                        {/* 모바일 배경 이미지 */}
-                        <div className="block lg:hidden absolute inset-0 z-0">
+                        {/* 모바일 배경 이미지 (md 미만에서만 노출) */}
+                        <div className="block md:hidden absolute inset-0 z-0">
                             <Image
                                 src={slide.moImage}
                                 alt="히어로 배경 모바일"
                                 fill
                                 priority={slide.id === 1}
-                                sizes="(max-width: 1440px) 100vw, 1920px"
+                                sizes="(max-width: 767px) 100vw, 1920px"
                                 className={`object-cover ${slide.moImagePos}`}
                             />
                         </div>
 
-                        {/* PC 배경 이미지 */}
-                        <div className="hidden lg:block absolute inset-0 z-0">
+                        {/* PC 배경 이미지 (md 이상부터 노출) */}
+                        <div className="hidden md:block absolute inset-0 z-0">
                             <Image
                                 src={slide.pcImage}
                                 alt="히어로 배경 PC"
                                 fill
                                 priority={slide.id === 1}
-                                sizes="(max-width: 1440px) 100vw, 1920px"
-                                className={`object-cover ${slide.pcImagePos}`}
+                                sizes="(min-width: 768px) 100vw, 1920px"
+                                className={`object-cover ${slide.pcImagePos.replace('lg:', 'md:')}`}
                             />
                         </div>
 
-                        {/* 텍스트 콘텐츠 영역 */}
+                        {/* 텍스트 콘텐츠 영역 (헤더와 동일한 패딩 및 최대 너비 적용) */}
                         <div
-                            className={`relative z-10 mx-auto max-w-[1320px] h-full flex flex-col ${
-                                slide.strongText ? 'pt-[220px]' : 'pt-[260px]'
-                            } lg:pt-0 lg:justify-center px-[20px] lg:px-0`}
+                            className={`relative z-10 mx-auto max-w-[1400px] h-full flex flex-col ${
+                                slide.strongText ? 'pt-[230px]' : 'pt-[290px]'
+                            } md:pt-0 md:justify-center px-[20px] md:px-[40px] lg:px-10`}
                         >
-                            <div className="hero-anim flex flex-col items-center text-center lg:items-start lg:text-left text-white lg:text-[#776B5D]">
-                                <span className="font-accent text-[15px] lg:text-[35px]  uppercase opacity-80">
+                            <div className="hero-anim flex flex-col items-center text-center md:items-start md:text-left text-white md:text-[#776B5D]">
+                                <span className="font-accent text-[15px] md:text-[35px] uppercase opacity-80">
                                     {slide.subtitle}
                                 </span>
-                                <h2 className="text-[25px]/[37px] lg:text-[30px]/[45px] font-semibold whitespace-pre-line break-keep mt-3 lg:mt-5.5  tracking-tight">
+                                <h2 className="text-[25px]/[37px] md:text-[30px]/[45px] font-semibold whitespace-pre-line break-keep mt-3 md:mt-5.5 tracking-tight">
                                     {slide.title}
                                 </h2>
                                 {slide.strongText && (
-                                    <strong className="block text-[25px]/[37px] lg:text-[30px]/[45px] font-bold mt-2 lg:mt-[22px]">
+                                    <strong className="block text-[25px]/[37px] md:text-[30px]/[45px] font-bold mt-2 md:mt-[22px]">
                                         {slide.strongText}
                                     </strong>
                                 )}
                                 <Link
                                     href="/about"
-                                    className="w-[176px] h-[55px] flex justify-center items-center border border-white rounded-full text-[20px] font-bold mt-[29px] lg:mt-[42px] lg:w-[165px] lg:h-[52px] lg:border-[#776b5d]"
+                                    className="w-[176px] h-[55px] flex justify-center items-center border border-white rounded-full text-[20px] font-bold mt-[29px] md:mt-[42px] md:w-[165px] md:h-[52px] md:border-[#776b5d]"
                                 >
                                     Introduction
                                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,8 +142,8 @@ export default function MainHero() {
                     </SwiperSlide>
                 ))}
 
-                {/* PC 전용 커스텀 프로그레스바 */}
-                <div className="hidden lg:flex absolute bottom-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1320px] z-20 pointer-events-none">
+                {/* PC 전용 커스텀 프로그레스바 (헤더와 동일한 패딩 및 최대 너비 적용) */}
+                <div className="hidden lg:flex absolute bottom-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1400px] lg:px-10 z-20 pointer-events-none">
                     <div className="w-[588px] h-[3px] bg-white rounded-full relative overflow-hidden">
                         <div
                             className="absolute top-0 left-0 h-full bg-[#776B5D] transition-all duration-500 ease-in-out rounded-full"
