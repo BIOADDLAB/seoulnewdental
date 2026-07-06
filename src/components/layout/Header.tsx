@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { HOSPITAL_INFO } from '@/constants/hospital';
 import { NAV_LINKS } from '@/constants/nav';
 
+// #TODO: 헤더아래 그림자 넣기
 export default function Header() {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
