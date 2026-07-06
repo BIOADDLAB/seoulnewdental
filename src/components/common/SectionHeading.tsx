@@ -1,5 +1,5 @@
 interface SectionHeadingProps {
-    title: string;
+    title: string | React.ReactNode;
     subtitle?: string;
     isLine?: boolean;
     isBg?: boolean;
@@ -26,7 +26,7 @@ export default function SectionHeading({
             )}
 
             <h2
-                className={`text-primary-dark break-keep text-[25px]/[35px] font-bold lg:text-[30px]/[35px] lg:font-medium ${titleClassName ?? ''}`}
+                className={`text-primary-dark break-keep whitespace-pre-line text-[25px]/[35px] font-bold lg:text-[30px]/[35px] lg:font-medium ${titleClassName ?? ''}`}
             >
                 {title}
             </h2>
