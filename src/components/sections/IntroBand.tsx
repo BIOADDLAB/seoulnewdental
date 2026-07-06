@@ -4,11 +4,13 @@ import { ReactNode } from 'react';
 interface IntroBandProps {
     topLabel?: string;
     accent?: string;
+    titleClassName?: string;
     accentClassName?: string;
     title?: ReactNode;
     isLine?: boolean;
     strong?: ReactNode;
-    desc?: ReactNode;
+    desc?: string | React.ReactNode;
+    descClassName?: string;
     bgImage?: string;
     bgPos?: string;
     className?: string;
@@ -18,6 +20,8 @@ export default function IntroBand({
     topLabel,
     accent,
     accentClassName,
+    titleClassName,
+    descClassName,
     title,
     isLine,
     strong,
@@ -61,7 +65,9 @@ export default function IntroBand({
                 )}
 
                 {title && (
-                    <h3 className="text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep mt-2">
+                    <h3
+                        className={`text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep mt-2  ${titleClassName || ''}`}
+                    >
                         {title}
                     </h3>
                 )}
@@ -75,11 +81,10 @@ export default function IntroBand({
                 {/* #ISSUE: strong과 desc가 모두 전달되었을 때 렌더링되는 블록 */}
                 {strong && desc ? (
                     <p className="text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep">
-                        {/* #STYLE: 두 속성이 결합될 때 사용하는 strong 태그에도 font-normal 적용 */}
                         <strong className="block lg:inline text-[15px] lg:text-[20px]/[35px] font-medium mb-[14px] lg:mb-0 lg:mr-1">
                             {strong}
                         </strong>
-                        <span className="inline">{desc}</span>
+                        <span className={`inline ${descClassName}`}>{desc}</span>
                     </p>
                 ) : (
                     <>
@@ -91,7 +96,9 @@ export default function IntroBand({
                         )}
 
                         {desc && (
-                            <p className="text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep mt-[14px] lg:mt-[18px]">
+                            <p
+                                className={`text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep mt-[14px] lg:mt-[18px] ${descClassName}`}
+                            >
                                 {desc}
                             </p>
                         )}

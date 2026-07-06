@@ -3,7 +3,7 @@ interface SectionHeadingProps {
     subtitle?: string;
     isLine?: boolean;
     isBg?: boolean;
-    desc?: string;
+    desc?: string | React.ReactNode;
     titleClassName?: string;
     subtitleClassName?: string;
     descClassName?: string;
@@ -25,7 +25,11 @@ export default function SectionHeading({
                 <span className={`block mb-[1px] lg:mb-[7px] break-keep ${subtitleClassName}`}>{subtitle}</span>
             )}
 
-            <h2 className={`text-primary-dark break-keep ${titleClassName}`}>{title}</h2>
+            <h2
+                className={`text-primary-dark break-keep text-[25px]/[35px] font-bold lg:text-[30px]/[35px] lg:font-medium ${titleClassName ?? ''}`}
+            >
+                {title}
+            </h2>
 
             {/* #STYLE: isLine이 참일 때, isBg(어두운 배경) */}
             {isLine && (

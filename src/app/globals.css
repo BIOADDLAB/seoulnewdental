@@ -3,6 +3,8 @@
 @theme inline {
     --font-sans: var(--font-sans), -apple-system, sans-serif;
     --font-accent: var(--font-accent), serif;
+    --font-kcc: var(--font-kcc), cursive;
+    --font-point: var(--font-point), cursive;
 }
 
 @theme {

@@ -17,6 +17,18 @@ const aboreto = localFont({
     weight: '400',
 });
 
+const allura = localFont({
+    src: '../../public/fonts/Allura-Regular.ttf',
+    variable: '--font-point',
+    weight: '400',
+});
+
+const kccEunyoung = localFont({
+    src: '../../public/fonts/KCC은영체(웹,모바일제작용).woff2',
+    variable: '--font-kcc',
+    weight: '400',
+});
+
 export const metadata: Metadata = {
     title: '서울NEW치과',
     description: '정확한 진단과 따뜻한 진료로 함께하는 서울NEW치과',
@@ -34,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="ko" className={`${suit.variable} ${aboreto.variable}`}>
+        <html lang="ko" className={`${suit.variable} ${aboreto.variable} ${allura.variable} ${kccEunyoung.variable}`}>
             <body className="antialiased">
                 <Header />
                 {children}
