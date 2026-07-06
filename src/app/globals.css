@@ -12,6 +12,18 @@
     --color-cream: #f7f3e9;
 }
 
+/* src/app/globals.css */
+@layer utilities {
+    /* Swiper가 컨테이너 밖으로 보여지도록 처리 */
+    .continuous-swiper {
+        overflow: visible !important;
+    }
+    /* 롤링 애니메이션 선형 처리 (끊김 방지) */
+    .continuous-swiper .swiper-wrapper {
+        transition-timing-function: linear !important;
+    }
+}
+
 body {
     font-family: var(--font-sans);
     color: #2c3d33;
