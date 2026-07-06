@@ -55,7 +55,8 @@ export default function SpecialPage() {
                         </span>
                     </>
                 }
-                descClassName="text-[15px]/[24px] mt-[22px] lg:text-[20px]/[30px] lg:mt-[35px] mb-[28px] lg:mb-[50px]"
+                titleClassName="!mb-[22px] lg:!mb-0"
+                descClassName="text-[15px]/[24px] mt-[0px] lg:text-[20px]/[30px] lg:mt-[25px] mb-[28px] lg:mb-[50px]"
                 circleSize="w-[100px] h-[100px] lg:w-[175px] lg:h-[175px]"
                 lineHeight="h-[1px] lg:h-[3px]"
                 numSizeClass="text-[13px]/[10px] mb-[6px] lg:text-[15px]/[10px] lg:mb-[24px]"
@@ -209,11 +210,7 @@ export default function SpecialPage() {
                     <div className="flex flex-col items-center gap-[10px] lg:gap-[20px] mt-[43px] lg:mt-[56px]">
                         {['앞니 모양이 고르지 않는 경우', '작은 깨짐이나 마모가 있는 경우'].map((text) => (
                             <div key={text} className="flex items-center gap-[10px] lg:gap-[14px]">
-                                <img
-                                    src="/images/i_check_g.svg"
-                                    alt="check"
-                                    className="w-[17px] lg:w-[34px] shrink-0"
-                                />
+                                <img src="/images/i_check_g.svg" alt="check" />
                                 <span className="text-[15px]/[24px] lg:text-[20px]/[30px] font-medium break-keep tracking-tighter">
                                     {text}
                                 </span>

@@ -80,7 +80,7 @@ export default function ProcessSteps({
                     <div className=" w-full">
                         <SectionHeading
                             title={topTitle || ''}
-                            titleClassName="mb-[30px] lg:mb-[45px]"
+                            titleClassName={`text-[25px]/[35px] font-bold lg:text-[30px]/[35px] lg:font-medium mb-[30px] lg:mb-[45px] ${titleClassName || ''}`}
                             subtitle={topSubtitle}
                             desc={desc}
                             descClassName={descClassName}

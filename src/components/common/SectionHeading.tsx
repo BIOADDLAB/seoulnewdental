@@ -31,7 +31,6 @@ export default function SectionHeading({
                 {title}
             </h2>
 
-            {/* #STYLE: isLine이 참일 때, isBg(어두운 배경) */}
             {isLine && (
                 <span className={`mt-4 w-[1px] h-[15px] lg:h-[24px] ${isBg ? 'bg-white' : 'bg-primary-dark'}`} />
             )}
