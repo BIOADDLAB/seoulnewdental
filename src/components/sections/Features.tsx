@@ -1,3 +1,5 @@
+// #ISSUE: 배경 이미지 및 컬러 교체 불가능 구조
+// #STYLE: bgImage, sectionClass 속성 추가
 import Image from 'next/image';
 import SectionHeading from '@/components/common/SectionHeading';
 
@@ -12,6 +14,7 @@ export interface FeaturesProps {
     topSubtitle?: string;
     topTitle?: string;
     bgImage?: string;
+    sectionClass?: string;
     centerText: string;
     mainTitle?: string;
     items: FeatureItem[];
@@ -25,21 +28,22 @@ export default function Features({
     topSubtitle,
     topTitle,
     bgImage = "url('/images/bg_stone_02.jpg')",
+    sectionClass = '',
     centerText,
     items,
     bottomBox,
 }: FeaturesProps) {
     return (
         <section
-            className={`w-full relative overflow-hidden py-[60px] px-[32px] lg:py-[140px] lg:px-0 ${
-                bgImage !== 'none' ? 'bg-cover bg-center' : 'bg-transparent'
-            }`}
+            className={`w-full relative overflow-hidden py-[60px] px-[32px] md:px-10 lg:py-[140px] lg:px-0 ${
+                bgImage !== 'none' ? 'bg-cover bg-center' : ''
+            } ${sectionClass}`}
             style={bgImage !== 'none' ? { backgroundImage: bgImage } : undefined}
         >
             <div className="mx-auto max-w-[1200px] flex flex-col items-center">
                 {(topSubtitle || topTitle) && <SectionHeading title={topTitle || ''} subtitle={topSubtitle} />}
 
-                <div className="relative w-full max-w-[1000px] flex flex-col mt-[35px] lg:mt-[72px] lg:flex-row lg:justify-between items-center lg:items-stretch z-10">
+                <div className="relative w-full max-w-[1000px] flex flex-col mt-[35px] md:mt-[50px] lg:mt-[72px] lg:flex-row lg:justify-between items-center lg:items-stretch z-10">
                     <div className="relative mb-[37px] lg:mb-0 lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 z-20 w-[234px] h-[234px] lg:w-[404px] lg:h-[404px]">
                         <div className="relative bg-primary/40 w-full h-full rounded-full">
                             <div className="absolute bg-primary/70 w-[192px] h-[192px] lg:w-[309px] lg:h-[309px] lg:bottom-[17px] rounded-full bottom-[12px] left-1/2 -translate-x-1/2">

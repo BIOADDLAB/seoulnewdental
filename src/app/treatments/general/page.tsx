@@ -1,4 +1,4 @@
-// #PAGE: 일반진료 페이지
+// #PAGE: 일반진료 페이지 (app/treatments/general/page.tsx)
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
@@ -24,7 +24,6 @@ const CAUTION_ITEMS = [
     '붓기나 통증이 있는 경우 냉찜질 해주기',
 ];
 
-// #STYLE: 무작위 숫자가 빠르게 지나가다 목표 숫자로 멈추는 스크램블 카운터 애니메이션
 function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
     const [count, setCount] = useState<number | string>(0);
     const ref = useRef<HTMLElement>(null);
@@ -35,8 +34,8 @@ function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    const duration = 1200; // 1.2초 동안 진행
-                    const interval = 40; // 40ms마다 숫자 변경 (빠른 속도감)
+                    const duration = 1200;
+                    const interval = 40;
                     let elapsed = 0;
 
                     const timer = setInterval(() => {
@@ -45,13 +44,12 @@ function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
                             clearInterval(timer);
                             setCount(targetNumber);
                         } else {
-                            // 10~99 사이의 무작위 두 자리 난수를 생성하여 슬롯머신 효과 연출
                             const randomNum = Math.floor(Math.random() * 90) + 10;
                             setCount(randomNum);
                         }
                     }, interval);
 
-                    observer.disconnect(); // 한 번만 실행
+                    observer.disconnect();
                 }
             },
             { threshold: 0.5 },
@@ -61,7 +59,6 @@ function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
     }, [targetNumber]);
 
     return (
-        // #STYLE: tabular-nums를 추가하여 숫자가 무작위로 바뀔 때 너비가 출렁이는 현상 방지
         <strong
             ref={ref}
             className="text-[130px] leading-none lg:text-[130px] font-extrabold tracking-tighter tabular-nums"
@@ -80,8 +77,6 @@ export default function GeneralPage() {
                 bgImageName="bg_sub_02"
             />
 
-            {/* 스케일링 및 잇몸치료 밴드 */}
-            {/* #TODO: 이미지 영역 확인 + 높이 확인 모바일 319 웹 541 */}
             <IntroBand
                 accent="PERIODONTAL CARE"
                 title="스케일링 및 잇몸치료"
@@ -92,11 +87,9 @@ export default function GeneralPage() {
                 descClassName="!text-[15px]/[24px] lg:!text-[20px]/[35px]"
             />
 
-            {/* #TODO: 배경 스톤 이미지 확인 */}
-            {/* 스케일링 필요성 */}
             <section
                 className="w-full bg-cover bg-center py-[62px] px-[24px] lg:py-[120px]"
-                style={{ backgroundImage: "url('/images/bg_stone_02.jpg')" }}
+                style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
                 <div className="mx-auto max-w-[900px] flex flex-col items-center">
                     <SectionHeading
@@ -131,7 +124,6 @@ export default function GeneralPage() {
                 </div>
             </section>
 
-            {/* 사랑니 발치 10만건 */}
             <section className="w-full bg-primary py-[65px] pb-[95px] px-[24px] lg:py-[100px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-center text-white">
                     <span className="font-accent text-[13px]/[13px] lg:text-[20px]/[13px] uppercase">WISDOM TEETH</span>
@@ -139,7 +131,6 @@ export default function GeneralPage() {
                         사랑니 발치
                     </h3>
 
-                    {/* #ISSUE: 폰트 사이즈가 달라서 어긋나는 문제를 해결하기 위해 items-baseline과 leading-none 적용 */}
                     <div className="flex items-baseline justify-center mt-[50px] lg:mt-[36px]">
                         <AnimatedCounter targetNumber={10} />
                         <span className="text-[40px] lg:text-[28px] leading-none font-semibold pl-[3px]">만건</span>
@@ -147,12 +138,9 @@ export default function GeneralPage() {
                 </div>
             </section>
 
-            {/* 사랑니 발치가 필요한 경우 */}
-            {/* #TODO: 배경 확인 */}
-            {/* #TODO: 줄바꿈 확인 */}
             <section
                 className="w-full bg-cover bg-center py-[62px] px-[24px] lg:py-[140px]"
-                style={{ backgroundImage: "url('/images/bg_stone_02.jpg')" }}
+                style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
                 <div className="mx-auto max-w-[848px] flex flex-col items-center">
                     <div className="w-[274px] h-[34px] lg:w-[500px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
@@ -161,7 +149,7 @@ export default function GeneralPage() {
                         </span>
                     </div>
 
-                    <ul className="grid grid-cols-2   gap-y-[18px]  lg:gap-y-[27px] mt-[36px] lg:mt-[56px] w-full ">
+                    <ul className="grid grid-cols-2 gap-y-[18px] lg:gap-y-[27px] mt-[36px] lg:mt-[56px] w-full ">
                         {EXTRACTION_CASES.map((item) => (
                             <li key={item} className="flex items-start gap-[5px] lg:gap-[10px]">
                                 <img
@@ -176,17 +164,9 @@ export default function GeneralPage() {
                         ))}
                     </ul>
 
-                    {/* 더보기 영역 */}
                     <div className="w-full flex lg:px-0 flex-col-reverse lg:flex-row items-end justify-between gap-[28px] lg:gap-[30px] mt-[60px] lg:mt-[110px]">
                         <div className="w-full lg:max-w-[480px]">
                             <span className="block w-full h-[1px] bg-primary" />
-                            {/* #ISSUE: 더보기 버튼은 없어져도 될 것 같아서 없애는걸로 협의 함 일단 주석 처리 */}
-                            {/* <button
-                                type="button"
-                                className="block text-[12px] lg:text-[16px] font-semibold text-[#626262] "
-                            >
-                                [더보기]
-                            </button> */}
                             <p className=" text-[12px]/[22px] lg:text-[15px]/[25px] font-medium text-[#626262] break-keep mt-[24px] lg:mt-[60px] tracking-tight">
                                 매복된 사랑니는 위치나 방향에 따라 인접치아를 손상시킬 수 있으며, 염증을 유발할 수
                                 있기에 발치를 시행해야 할 수 있습니다. <br className="block md:hidden" />
@@ -194,23 +174,23 @@ export default function GeneralPage() {
                                 계획을 수립하고 있습니다.
                             </p>
                         </div>
-                        {/* #TODO: 모바일에서 이미지 포지션 가운데 아래로 바꾸기 */}
                         <div className="relative w-full h-[133px] lg:w-[428px] lg:h-[264px] shrink-0 overflow-hidden rounded-[6px]">
                             <Image
                                 src="/images/img_xray.jpg"
                                 alt="X-Ray 촬영 장비"
                                 fill
+                                quality={100}
                                 sizes="(max-width: 1024px) 100vw, 406px"
-                                className="object-cover"
+                                className="object-cover object-bottom lg:object-center"
                             />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 발치 후 주의사항 */}
-            {/* #TODO: 모바일에서는 그냥 화이트 배경 pc에서는 stone배경 깔림 */}
-            <section className="w-full bg-white py-[65px] px-[24px] lg:pt-[140px] lg:pb-[110px]">
+            {/* #ISSUE: PC 해상도에서 스톤 배경이 노출되는 문제 */}
+            {/* #STYLE: 모든 해상도에서 bg-white(#fff) 단일 적용 */}
+            <section className="w-full py-[65px] px-[24px] lg:pt-[140px] lg:pb-[110px] bg-white">
                 <div className="mx-auto max-w-[910px] flex flex-col items-center">
                     <div className="w-[300px] h-[44px] lg:w-[550px] lg:h-[62px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
                         <span className="text-[20px]/[35px] lg:text-[30px]/[35px] font-medium mr-2 ">

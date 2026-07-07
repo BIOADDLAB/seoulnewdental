@@ -10,7 +10,7 @@ export default function ConservativePage() {
         <main className="w-full">
             <SubPageHero
                 title="보존진료 소개"
-                desc="손상된 치아를 발치하지 않고 자연치아를\n최대한 살려 기능을 유지하는 치료"
+                desc={'손상된 치아를 발치하지 않고 자연치아를 \n최대한 살려 기능을 유지하는 치료'}
                 bgImageName="bg_sub_01" // 서브이미지 01로 변경
             />
 

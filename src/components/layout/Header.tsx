@@ -40,7 +40,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="sticky top-0 z-40 w-full bg-primary text-white">
+            <header className="sticky top-0 z-40 w-full bg-primary text-white shadow-md">
                 <div className="mx-auto flex h-[60px] max-w-[1400px] items-center justify-between pl-[30px] pr-[22px] lg:h-[95px] lg:px-10">
                     {/* 로고 영역 */}
                     <Link href="/" className="flex items-center gap-1.5 lg:gap-2">

@@ -1,3 +1,5 @@
+// #ISSUE: 1920px 대형 모니터 인물 이미지 잘림, 하드코딩된 여백 및 화질 저하
+// #STYLE: 2xl:h-[700px] 적용, quality={100} 적용
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -41,7 +43,9 @@ export default function IntroBand({
     const isDark = !!bgImage;
 
     return (
-        <section className={`w-full h-[364px] lg:h-[540px] 2xl:h-[700px] relative overflow-hidden ${className}`}>
+        <section
+            className={`w-full h-[364px] md:h-[450px] lg:h-[540px] 2xl:h-[700px] relative overflow-hidden ${className}`}
+        >
             {bgImage && (
                 <>
                     <Image
@@ -58,11 +62,12 @@ export default function IntroBand({
             )}
 
             <div
-                className={`absolute flex flex-col items-center text-center w-full ${
+                className={`absolute flex flex-col items-center text-center w-full px-4 md:px-10 ${
                     isDark ? 'text-white' : 'text-primary-dark'
                 } ${positionClassName ?? 'top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'}`}
             >
                 {topLabel && <span className={`text-[15px] ${topLabelClassName ?? ''}`}>{topLabel}</span>}
+
                 {accent && (
                     <span
                         className={`font-accent text-[20px] lg:text-[30px] uppercase mt-[6px] ${accentClassName ?? ''}`}
@@ -70,11 +75,13 @@ export default function IntroBand({
                         {accent}
                     </span>
                 )}
+
                 {isLine && (
                     <span
                         className={`mb-[20px] lg:mb-[26px] w-[1px] h-[16px] lg:h-[22px] ${lineClassName ?? (isDark ? 'bg-white' : 'bg-primary-dark')}`}
                     />
                 )}
+
                 {title && (
                     <h3
                         className={`text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep ${titleClassName ?? ''}`}
@@ -82,6 +89,7 @@ export default function IntroBand({
                         {title}
                     </h3>
                 )}
+
                 {strong && desc ? (
                     <p className="mt-2 text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep">
                         <strong

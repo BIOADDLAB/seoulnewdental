@@ -1,3 +1,5 @@
+// #ISSUE: 고정된 배경 이미지로 인해 다양한 페이지의 요구사항(스톤1/스톤2/#fff/#f9f9f9) 수용 불가
+// #STYLE: bgImage, sectionClass 속성 추가 및 투명 처리 로직 구성
 import SectionHeading from '@/components/common/SectionHeading';
 
 export interface ProcessItem {
@@ -27,7 +29,7 @@ export default function ProcessSteps({
     titleClassName,
     desc,
     items,
-    sectionClass,
+    sectionClass = '',
     circleSize,
     lineHeight,
     descClassName,
@@ -73,14 +75,14 @@ export default function ProcessSteps({
 
     return (
         <section
-            className={`w-full relative overflow-hidden py-[62px] px-[16px] lg:pt-[140px] lg:pb-[110px] lg:px-0 ${
+            className={`w-full relative overflow-hidden py-[62px] px-[16px] md:px-10 lg:pt-[140px] lg:pb-[110px] lg:px-0 ${
                 bgImage !== 'none' ? 'bg-cover bg-center' : ''
-            } ${sectionClass || ''}`}
+            } ${sectionClass}`}
             style={bgImage !== 'none' ? { backgroundImage: bgImage } : undefined}
         >
             <div className="mx-auto max-w-[1200px] flex flex-col items-center">
                 {(topSubtitle || topTitle || desc) && (
-                    <div className=" w-full">
+                    <div className="w-full">
                         <SectionHeading
                             title={topTitle || ''}
                             titleClassName={`text-[25px]/[35px] font-bold lg:text-[30px]/[35px] lg:font-medium mb-[30px] lg:mb-[45px] ${titleClassName || ''}`}

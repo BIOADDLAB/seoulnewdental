@@ -1,3 +1,5 @@
+/* #ISSUE: 플로팅 버튼 등장 시 슬라이드 업 애니메이션 누락 */
+/* #STYLE: 자연스러운 ease-out 곡선을 가진 floatUp 키프레임 추가 */
 @import 'tailwindcss';
 
 @theme inline {
@@ -14,15 +16,26 @@
     --color-cream: #f7f3e9;
 }
 
-/* src/app/globals.css */
 @layer utilities {
-    /* Swiper가 컨테이너 밖으로 보여지도록 처리 */
     .continuous-swiper {
         overflow: visible !important;
     }
-    /* 롤링 애니메이션 선형 처리 (끊김 방지) */
     .continuous-swiper .swiper-wrapper {
         transition-timing-function: linear !important;
+    }
+    .animate-float-up {
+        animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

@@ -187,7 +187,7 @@ export default function MainHero() {
 
             {/* 정확한 진단과 따뜻한 진료 영역 - PC/모바일 공통 */}
             <div
-                className="w-full relative py-[30px] bg-cover bg-center text-center border-t border-gray-200 lg:py-[60px]"
+                className="w-full relative py-[30px] bg-cover bg-center text-center lg:py-[60px]"
                 style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
                 <div className="flex flex-col items-center justify-center gap-2">
