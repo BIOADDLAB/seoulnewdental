@@ -1,5 +1,4 @@
 // #ISSUE: 진료과목 섹션 등장 시 애니메이션 부재 및 이미지 화질 저하
-// #STYLE: IntersectionObserver를 활용한 스크롤 연동 순차적 슬라이드 업 적용 및 Image quality={100} 부여
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -45,7 +44,7 @@ function ServiceCard({
             <div
                 className={`relative rounded-[10px] overflow-hidden ${isPc ? 'w-[186px] h-[228px]' : 'w-[90px] h-[109px] md:w-[140px] md:h-[170px]'}`}
             >
-                <Image src={item.image} alt={item.label} fill sizes="186px" quality={100} className="object-cover" />
+                <Image src={item.image} alt={item.label} fill sizes="186px" className="object-cover" />
             </div>
             <div className="flex flex-col items-center gap-1">
                 {isPc && <span className="text-[15px]/[13px] uppercase">{item.labelEn}</span>}

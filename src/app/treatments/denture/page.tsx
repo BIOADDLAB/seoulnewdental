@@ -166,7 +166,6 @@ export default function DenturePage() {
                     src="/images/bg_denture_main.jpg"
                     alt="틀니 제작 모습"
                     fill
-                    quality={100}
                     sizes="100vw"
                     className="object-cover object-bottom z-0"
                 />

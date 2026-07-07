@@ -34,7 +34,6 @@ export default function SubPageHero({ title, desc, bgImageName, imagePos }: SubP
                         alt={`${title} 배경 이미지`}
                         fill
                         priority
-                        quality={100}
                         sizes="100vw"
                         className={`object-cover ${position}`}
                     />
@@ -58,13 +57,7 @@ export default function SubPageHero({ title, desc, bgImageName, imagePos }: SubP
 
                 <div className="flex flex-col items-center text-center mt-[30px] lg:mt-[90px]">
                     <div className="relative w-[32px] h-[32px] lg:w-[40px] lg:h-[40px]">
-                        <Image
-                            src="/images/logo_b_x4.png"
-                            alt="서울NEW치과 심볼"
-                            fill
-                            quality={100}
-                            className="object-contain"
-                        />
+                        <Image src="/images/logo_b_x4.png" alt="서울NEW치과 심볼" fill className="object-contain" />
                     </div>
 
                     <span className="text-[#988575] text-[15px]/[46px] font-bold lg:text-[25px]/[46px]">

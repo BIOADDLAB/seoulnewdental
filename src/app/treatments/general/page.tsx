@@ -179,7 +179,6 @@ export default function GeneralPage() {
                                 src="/images/img_xray.jpg"
                                 alt="X-Ray 촬영 장비"
                                 fill
-                                quality={100}
                                 sizes="(max-width: 1024px) 100vw, 406px"
                                 className="object-cover object-bottom lg:object-center"
                             />

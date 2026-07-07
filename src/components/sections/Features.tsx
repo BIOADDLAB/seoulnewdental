@@ -140,7 +140,6 @@ export default function Features({
                                 src="/images/bg_stone_02.jpg"
                                 alt="background"
                                 fill
-                                quality={100}
                                 sizes="(max-width: 768px) 100vw, 300px"
                                 className="object-cover z-0"
                             />

@@ -1,5 +1,5 @@
 // #ISSUE: 1920px 대형 모니터 인물 이미지 잘림, 하드코딩된 여백 및 화질 저하
-// #STYLE: 2xl:h-[700px] 적용, quality={100} 적용
+// #STYLE: 2xl:h-[700px] 적용
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -52,7 +52,6 @@ export default function IntroBand({
                         src={bgImage}
                         alt=""
                         fill
-                        quality={100}
                         sizes="100vw"
                         className={`object-cover ${bgPos || 'object-center'}`}
                         aria-hidden

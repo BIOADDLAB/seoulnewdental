@@ -11,7 +11,7 @@ export default function FloatingButton() {
             aria-label="전화 상담 연결"
         >
             <div className="relative w-[28px] h-[28px] lg:w-[32px] lg:h-[32px] lg:mb-1">
-                <Image src="/images/i_tel.svg" alt="전화 아이콘" fill quality={100} className="object-contain" />
+                <Image src="/images/i_tel.svg" alt="전화 아이콘" fill className="object-contain" />
             </div>
 
             <div className="hidden lg:flex flex-col items-center">
