@@ -278,9 +278,13 @@ export default function ImplantPage() {
                 </div>
             </section>
 
-            {/* 임플란트 과정 */}
-            <ProcessSteps topSubtitle="PROCESS" topTitle="임플란트 과정" items={PROCESS_ITEMS} />
-
+            <ProcessSteps
+                topSubtitle="PROCESS"
+                topTitle="임플란트 과정"
+                items={PROCESS_ITEMS}
+                bgImage="none"
+                sectionClass="bg-white"
+            />
             <ContactSection />
         </main>
     );

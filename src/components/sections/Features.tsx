@@ -31,8 +31,10 @@ export default function Features({
 }: FeaturesProps) {
     return (
         <section
-            className="w-full relative overflow-hidden bg-cover bg-center py-[60px] px-[32px] lg:py-[140px] lg:px-0"
-            style={{ backgroundImage: bgImage }}
+            className={`w-full relative overflow-hidden py-[60px] px-[32px] lg:py-[140px] lg:px-0 ${
+                bgImage !== 'none' ? 'bg-cover bg-center' : 'bg-transparent'
+            }`}
+            style={bgImage !== 'none' ? { backgroundImage: bgImage } : undefined}
         >
             <div className="mx-auto max-w-[1200px] flex flex-col items-center">
                 {(topSubtitle || topTitle) && <SectionHeading title={topTitle || ''} subtitle={topSubtitle} />}
@@ -48,12 +50,10 @@ export default function Features({
                         </div>
                     </div>
 
-                    {/* 모바일 전용 레이아웃 */}
                     <div className="flex lg:hidden w-full flex-col gap-[30px] mb-[30px]">
                         {items.map((item) => (
                             <div key={item.id} className="relative w-full flex flex-col items-center bg-transparent">
                                 <div className="relative w-full flex items-center justify-center gap-[8px] pb-[8px] border-b-0 border-primary">
-                                    {/* #STYLE: 정중앙 정렬을 방해하던 pt-[2px] 제거 */}
                                     <span className="flex items-center justify-center w-[22px] h-[22px] shrink-0 rounded-full bg-primary text-white text-[13px] leading-none">
                                         {item.num}
                                     </span>
@@ -68,7 +68,6 @@ export default function Features({
                         ))}
                     </div>
 
-                    {/* PC 왼쪽 컬럼 */}
                     <div className="hidden lg:flex flex-col w-full lg:w-[320px] gap-[30px] lg:gap-[230px] mb-[30px] lg:mb-0 lg:py-[40px]">
                         {[items[0], items[2]].map((item, idx) => (
                             <div
@@ -76,7 +75,6 @@ export default function Features({
                                 className="relative w-full flex flex-col items-center lg:items-start bg-transparent"
                             >
                                 <div className="relative w-full flex items-center justify-center lg:justify-start gap-[8px] lg:gap-[12px] pb-[8px] lg:pb-[12px] border-b-0 lg:border-b border-primary">
-                                    {/* #STYLE: 정중앙 정렬을 방해하던 pt-[2px] 및 lg:pt-[2px] 제거 */}
                                     <span className="flex items-center justify-center w-[22px] h-[22px] lg:w-[29px] lg:h-[29px] shrink-0 rounded-full bg-primary text-white text-[13px] lg:text-[14px] leading-none">
                                         {item.num}
                                     </span>
@@ -100,7 +98,6 @@ export default function Features({
                         ))}
                     </div>
 
-                    {/* PC 오른쪽 컬럼 */}
                     <div className="hidden lg:flex flex-col w-full lg:w-[320px] gap-[30px] lg:gap-[230px] lg:py-[40px]">
                         {[items[1], items[3]].map((item, idx) => (
                             <div
@@ -117,7 +114,6 @@ export default function Features({
                                             <line x1="60" y1="60" x2="0" y2="0" stroke="#769283" strokeWidth="1" />
                                         )}
                                     </svg>
-                                    {/* #STYLE: 정중앙 정렬을 방해하던 pt-[2px] 및 lg:pt-[2px] 제거 */}
                                     <span className="flex items-center justify-center w-[22px] h-[22px] lg:w-[29px] lg:h-[29px] shrink-0 rounded-full bg-primary text-white text-[13px] lg:text-[14px] leading-none">
                                         {item.num}
                                     </span>
@@ -140,14 +136,14 @@ export default function Features({
                                 src="/images/bg_stone_02.jpg"
                                 alt="background"
                                 fill
-                                className="object-cover z-0"
+                                quality={100}
                                 sizes="(max-width: 768px) 100vw, 300px"
+                                className="object-cover z-0"
                             />
                             <span className="relative z-10 text-[#333] font-bold text-[14px] lg:text-[16px]">
                                 {bottomBox.title}
                             </span>
                         </div>
-
                         {bottomBox.list.map((listItem, idx) => (
                             <div key={idx} className="flex items-center gap-[8px]">
                                 <img src="/images/i_check_g.svg" alt="check" className="w-[16px] shrink-0" />

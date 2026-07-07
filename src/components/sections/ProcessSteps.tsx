@@ -18,6 +18,7 @@ export interface ProcessStepsProps {
     descClassName?: string;
     numSizeClass?: string;
     textSizeClass?: string;
+    bgImage?: string;
 }
 
 export default function ProcessSteps({
@@ -32,6 +33,7 @@ export default function ProcessSteps({
     descClassName,
     numSizeClass: numSizeClassProp,
     textSizeClass: textSizeClassProp,
+    bgImage = "url('/images/bg_stone.jpg')",
 }: ProcessStepsProps) {
     const isFourItems = items.length === 4;
 
@@ -44,7 +46,6 @@ export default function ProcessSteps({
         (isFourItems
             ? 'text-[15px] md:text-[13px] lg:text-[14px] mb-[14px] lg:mb-1'
             : 'text-[12px] md:text-[13px] lg:text-[14px] mb-[8px] lg:mb-1');
-
     const textSizeClass =
         textSizeClassProp ??
         (isFourItems
@@ -72,8 +73,10 @@ export default function ProcessSteps({
 
     return (
         <section
-            className={`w-full relative overflow-hidden bg-cover bg-center py-[62px] px-[16px] lg:pt-[140px] lg:pb-[110px] lg:px-0 ${sectionClass}`}
-            style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
+            className={`w-full relative overflow-hidden py-[62px] px-[16px] lg:pt-[140px] lg:pb-[110px] lg:px-0 ${
+                bgImage !== 'none' ? 'bg-cover bg-center' : ''
+            } ${sectionClass || ''}`}
+            style={bgImage !== 'none' ? { backgroundImage: bgImage } : undefined}
         >
             <div className="mx-auto max-w-[1200px] flex flex-col items-center">
                 {(topSubtitle || topTitle || desc) && (

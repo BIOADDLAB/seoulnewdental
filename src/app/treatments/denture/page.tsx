@@ -151,7 +151,6 @@ const CARE_ITEMS: ProcessItem[] = [
         ),
     },
 ];
-
 export default function DenturePage() {
     return (
         <main className="w-full">
@@ -161,13 +160,13 @@ export default function DenturePage() {
                 bgImageName="bg_sub_05"
             />
 
-            {/* 틀니 소개 밴드 + 메인 이미지 */}
-            {/* #TODO: 이미지 위치 확인하기 */}
-            <section className="relative w-full h-[537px] md:h-[700px] lg:h-[1020px] flex flex-col">
+            {/* 1920 기준 잘림 현상을 방지하기 위해 2xl:h-[1200px] 추가 */}
+            <section className="relative w-full h-[537px] md:h-[700px] lg:h-[1020px] 2xl:h-[1200px] flex flex-col">
                 <Image
                     src="/images/bg_denture_main.jpg"
                     alt="틀니 제작 모습"
                     fill
+                    quality={100}
                     sizes="100vw"
                     className="object-cover object-bottom z-0"
                 />
@@ -201,11 +200,10 @@ export default function DenturePage() {
                 />
             </section>
 
-            {/* 장점 소개 */}
-            {/* #TODO: 배경 stone 번호 확인 */}
+            {/* 장점소개 스톤1 적용 */}
             <section
                 className="w-full bg-cover bg-center py-[62px] px-[24px] lg:pt-[114px] lg:pb-[125px]"
-                style={{ backgroundImage: "url('/images/bg_stone_02.jpg')" }}
+                style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
                 <div className="mx-auto max-w-[1100px] flex flex-col items-center">
                     <SectionHeading
@@ -306,6 +304,8 @@ export default function DenturePage() {
             {/* 틀니 관리 방법 */}
             {/* #TODO: 배경 f9f9f9로 변경 + 안에 텍스트 정렬 확인 */}
             <ProcessSteps
+                bgImage="none"
+                sectionClass="bg-[#f9f9f9] lg:!pb-[140px]"
                 topSubtitle="DENTURE CARE GUIDE"
                 topTitle="틀니 관리 방법"
                 desc="올바른 관리가 틀니의 편안함과 수명을 좌우합니다."
@@ -316,9 +316,7 @@ export default function DenturePage() {
                 lineHeight="h-[1px] lg:h-[3px]"
                 numSizeClass="text-[13px]/[10px] mb-[6px] lg:text-[15px]/[10px] lg:mb-[25px]"
                 textSizeClass="text-[13px]/[19px] lg:text-[15px]/[25px] lg:font-medium"
-                sectionClass="lg:!pb-[140px]"
             />
-
             <ContactSection />
         </main>
     );

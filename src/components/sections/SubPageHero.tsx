@@ -1,4 +1,3 @@
-// #STYLE: PC 이미지 확대 비율 및 반응형 줄바꿈 속성 수정
 import Image from 'next/image';
 
 interface SubPageHeroProps {
@@ -8,7 +7,6 @@ interface SubPageHeroProps {
     imagePos?: string;
 }
 
-// #ISSUE: 이미지 위치 추후에 각각조정하기
 const DEFAULT_IMAGE_POS: Record<SubPageHeroProps['bgImageName'], string> = {
     bg_sub_01: 'object-center',
     bg_sub_02: 'object-center',
@@ -23,17 +21,18 @@ export default function SubPageHero({ title, desc, bgImageName, imagePos }: SubP
 
     return (
         <section
-            className="w-full relative overflow-hidden bg-cover bg-repeat px-[16px] pt-[16px] pb-[24px] lg:px-0 lg:pt-[45px] lg:pb-[78px]"
+            className="w-full relative overflow-hidden bg-cover bg-repeat px-[16px] pt-[16px] pb-[24px] lg:px-[40px] xl:px-0 lg:pt-[45px] lg:pb-[78px]"
             style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
         >
             <div className="mx-auto max-w-[1360px] flex flex-col items-center justify-center">
-                <div className="w-full h-[179px] sm:h-[350px] lg:h-[490px] rounded-[15px] lg:rounded-[50px] overflow-hidden shadow-md relative flex flex-col items-center justify-center text-center px-4">
+                <div className="w-full h-[179px] sm:h-[350px] lg:h-[490px] 2xl:h-[600px] rounded-[15px] lg:rounded-[50px] overflow-hidden shadow-md relative flex flex-col items-center justify-center text-center px-4">
                     <Image
                         src={`/images/${bgImageName}.jpg`}
                         alt={`${title} 배경 이미지`}
                         fill
                         priority
-                        sizes="(max-width: 1143px) 100vw, 1143px"
+                        quality={100}
+                        sizes="100vw"
                         className={`object-cover ${position}`}
                     />
 

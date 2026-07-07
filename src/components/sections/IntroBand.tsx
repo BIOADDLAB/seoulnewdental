@@ -41,13 +41,14 @@ export default function IntroBand({
     const isDark = !!bgImage;
 
     return (
-        <section className={`w-full h-[364px] lg:h-[540px] relative overflow-hidden ${className}`}>
+        <section className={`w-full h-[364px] lg:h-[540px] 2xl:h-[700px] relative overflow-hidden ${className}`}>
             {bgImage && (
                 <>
                     <Image
                         src={bgImage}
                         alt=""
                         fill
+                        quality={100}
                         sizes="100vw"
                         className={`object-cover ${bgPos || 'object-center'}`}
                         aria-hidden
@@ -62,7 +63,6 @@ export default function IntroBand({
                 } ${positionClassName ?? 'top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'}`}
             >
                 {topLabel && <span className={`text-[15px] ${topLabelClassName ?? ''}`}>{topLabel}</span>}
-
                 {accent && (
                     <span
                         className={`font-accent text-[20px] lg:text-[30px] uppercase mt-[6px] ${accentClassName ?? ''}`}
@@ -70,15 +70,11 @@ export default function IntroBand({
                         {accent}
                     </span>
                 )}
-
                 {isLine && (
                     <span
-                        className={`mb-[20px] lg:mb-[26px] w-[1px] h-[16px] lg:h-[22px] ${
-                            lineClassName ?? (isDark ? 'bg-white' : 'bg-primary-dark')
-                        }`}
+                        className={`mb-[20px] lg:mb-[26px] w-[1px] h-[16px] lg:h-[22px] ${lineClassName ?? (isDark ? 'bg-white' : 'bg-primary-dark')}`}
                     />
                 )}
-
                 {title && (
                     <h3
                         className={`text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep ${titleClassName ?? ''}`}
@@ -86,7 +82,6 @@ export default function IntroBand({
                         {title}
                     </h3>
                 )}
-
                 {strong && desc ? (
                     <p className="mt-2 text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep">
                         <strong
@@ -105,7 +100,6 @@ export default function IntroBand({
                                 {strong}
                             </strong>
                         )}
-
                         {desc && (
                             <p
                                 className={`text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep mt-[14px] lg:mt-[18px] ${descClassName ?? ''}`}

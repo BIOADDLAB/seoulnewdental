@@ -11,10 +11,9 @@ export default function ConservativePage() {
             <SubPageHero
                 title="보존진료 소개"
                 desc="손상된 치아를 발치하지 않고 자연치아를\n최대한 살려 기능을 유지하는 치료"
-                bgImageName="bg_sub_03"
+                bgImageName="bg_sub_01" // 서브이미지 01로 변경
             />
 
-            {/* 의료진 상담 영역 */}
             <IntroBand
                 topLabel="SEOUL NEW DENTAL"
                 accent="DOCTOR CONSULTATION"
@@ -40,6 +39,7 @@ export default function ConservativePage() {
                 className="w-full py-[60px] lg:py-[140px] px-[20px] bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
+                {/* 기존 충치 원인 내용 (수정 없음) */}
                 <div className="max-w-[1040px] mx-auto flex flex-col items-center">
                     <SectionHeading subtitle="CAVITY CAUSES" title="충치는 왜 생기는 건가요?" />
                     <p className="mt-[20px] text-center text-[14px] lg:text-[18px] font-medium leading-[1.6] break-keep">
@@ -85,7 +85,9 @@ export default function ConservativePage() {
                 </div>
             </section>
 
+            {/* 배경 이미지 제거 bgImage="none" 전달 */}
             <Features
+                bgImage="none"
                 centerText={`충치를 치료하는 \n과정은 \n무엇인가요?`}
                 mainTitle="충치 치료 과정"
                 items={[

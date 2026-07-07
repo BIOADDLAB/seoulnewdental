@@ -124,7 +124,10 @@ export default function AboutPage() {
 
             {/* #TODO: 진료과목 배경 stone01 로 변경하기 */}
             {/* 진료과목 영역 */}
-            <section className="w-full bg-cover bg-center py-[60px] lg:py-[140px] overflow-hidden">
+            <section
+                className="w-full bg-cover bg-center py-[60px] lg:py-[140px] overflow-hidden"
+                style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
+            >
                 {/* 타이틀 영역 */}
                 <div className="mx-auto max-w-[1320px] px-[24px] lg:px-10">
                     <SectionHeading
