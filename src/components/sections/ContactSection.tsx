@@ -1,4 +1,4 @@
-import { HOSPITAL_INFO } from '@/constants/hospital';
+import { GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_LINK_URL, HOSPITAL_INFO } from '@/constants/hospital';
 
 export default function ContactSection() {
     return (
@@ -67,14 +67,22 @@ export default function ContactSection() {
 
                     {/* [우측 컨테이너]: 지도 영역 */}
                     <div className="mb-[24px] w-full lg:w-full lg:max-w-[727px] lg:shrink lg:mb-0">
-                        <div className="block w-full h-[154px] sm:h-[220px] lg:h-full bg-[#d9d9d9] rounded-[10px] relative">
+                        <div className="relative block h-[154px] w-full overflow-hidden rounded-[10px] bg-[#d9d9d9] sm:h-[220px] lg:h-full">
+                            <iframe
+                                src={GOOGLE_MAPS_EMBED_URL}
+                                title={`${HOSPITAL_INFO.name} 위치 지도`}
+                                className="absolute inset-0 h-full w-full border-0"
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            />
                             <a
-                                href="https://maps.google.com"
+                                href={GOOGLE_MAPS_LINK_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex justify-center items-center w-[98px] h-[30px] rounded-[7px] border border-black bg-white absolute bottom-[20px] right-[20px]"
+                                className="absolute bottom-[20px] right-[20px] flex h-[30px] w-[98px] items-center justify-center rounded-[7px] border border-black bg-white"
                             >
-                                <img src="/images/i_map_google.svg" className="w-[14px] h-auto" alt="구글지도 아이콘" />
+                                <img src="/images/i_map_google.svg" className="h-auto w-[14px]" alt="구글지도 아이콘" />
                                 <span className="text-[10px] font-semibold text-black">구글지도로 보기</span>
                             </a>
                         </div>
