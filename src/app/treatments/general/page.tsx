@@ -1,4 +1,7 @@
 // #PAGE: 일반진료 페이지
+'use client';
+
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SectionHeading from '@/components/common/SectionHeading';
@@ -20,6 +23,53 @@ const CAUTION_ITEMS = [
     '심한 운동 및 뜨거운 사우나는 1~2일 정도 피하기',
     '붓기나 통증이 있는 경우 냉찜질 해주기',
 ];
+
+// #STYLE: 무작위 숫자가 빠르게 지나가다 목표 숫자로 멈추는 스크램블 카운터 애니메이션
+function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
+    const [count, setCount] = useState<number | string>(0);
+    const ref = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    const duration = 1200; // 1.2초 동안 진행
+                    const interval = 40; // 40ms마다 숫자 변경 (빠른 속도감)
+                    let elapsed = 0;
+
+                    const timer = setInterval(() => {
+                        elapsed += interval;
+                        if (elapsed >= duration) {
+                            clearInterval(timer);
+                            setCount(targetNumber);
+                        } else {
+                            // 10~99 사이의 무작위 두 자리 난수를 생성하여 슬롯머신 효과 연출
+                            const randomNum = Math.floor(Math.random() * 90) + 10;
+                            setCount(randomNum);
+                        }
+                    }, interval);
+
+                    observer.disconnect(); // 한 번만 실행
+                }
+            },
+            { threshold: 0.5 },
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [targetNumber]);
+
+    return (
+        // #STYLE: tabular-nums를 추가하여 숫자가 무작위로 바뀔 때 너비가 출렁이는 현상 방지
+        <strong
+            ref={ref}
+            className="text-[130px] leading-none lg:text-[130px] font-extrabold tracking-tighter tabular-nums"
+        >
+            {count}
+        </strong>
+    );
+}
 
 export default function GeneralPage() {
     return (
@@ -81,8 +131,7 @@ export default function GeneralPage() {
                 </div>
             </section>
 
-            {/* 사랑니 발치 10만건 정렬 확인 모바일에서도 10 만건이 items-end로 정렬되어야함 */}
-            {/* #TODO:  */}
+            {/* 사랑니 발치 10만건 */}
             <section className="w-full bg-primary py-[65px] pb-[95px] px-[24px] lg:py-[100px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-center text-white">
                     <span className="font-accent text-[13px]/[13px] lg:text-[20px]/[13px] uppercase">WISDOM TEETH</span>
@@ -90,9 +139,10 @@ export default function GeneralPage() {
                         사랑니 발치
                     </h3>
 
-                    <div className="flex items-end mt-[50px] lg:mt-[36px]">
-                        <strong className=" text-[130px]/[30px] lg:text-[130px]/[120px] font-extrabold">10</strong>
-                        <span className="text-[40px]/[33px] lg:text-[28px] font-semibold pl-[3px]">만건</span>
+                    {/* #ISSUE: 폰트 사이즈가 달라서 어긋나는 문제를 해결하기 위해 items-baseline과 leading-none 적용 */}
+                    <div className="flex items-baseline justify-center mt-[50px] lg:mt-[36px]">
+                        <AnimatedCounter targetNumber={10} />
+                        <span className="text-[40px] lg:text-[28px] leading-none font-semibold pl-[3px]">만건</span>
                     </div>
                 </div>
             </section>
@@ -127,7 +177,6 @@ export default function GeneralPage() {
                     </ul>
 
                     {/* 더보기 영역 */}
-                    {/* <div className="w-full flex px-[26px] lg:px-0 flex-col-reverse lg:flex-row items-end justify-between gap-[28px] lg:gap-[30px] mt-[60px] lg:mt-[110px]"> */}
                     <div className="w-full flex lg:px-0 flex-col-reverse lg:flex-row items-end justify-between gap-[28px] lg:gap-[30px] mt-[60px] lg:mt-[110px]">
                         <div className="w-full lg:max-w-[480px]">
                             <span className="block w-full h-[1px] bg-primary" />

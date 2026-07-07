@@ -1,4 +1,7 @@
 // #PAGE: 임플란트 페이지
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SectionHeading from '@/components/common/SectionHeading';
@@ -41,6 +44,43 @@ const PROCESS_ITEMS: ProcessItem[] = [
     { id: 'p4', num: '04', text: '치아 기능과 심미성을\n고려한 맞춤 보철' },
 ];
 
+// #STYLE: PPT 시안에 있던 "빛이 스르륵 지나가는 효과" 컴포넌트 구현
+function ShinyBadge({ src, alt }: { src: string; alt: string }) {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect(); // 한 번만 스르륵
+                }
+            },
+            { threshold: 0.5 },
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div
+            ref={ref}
+            className="absolute z-10 -right-[20px] lg:right-[-10px] top-0 -translate-y-1/2 w-[86px] h-[86px] lg:w-[173px] lg:h-[173px] rounded-full overflow-hidden"
+        >
+            <Image src={src} alt={alt} fill sizes="173px" className="object-contain" />
+            <div
+                className={`absolute top-0 bottom-0 w-[150%] bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] z-20 transition-transform duration-[1.2s] ease-in-out ${
+                    inView ? 'translate-x-[100%]' : '-translate-x-[150%]'
+                }`}
+                style={{ transitionDelay: '0.2s' }}
+            />
+        </div>
+    );
+}
+
 export default function ImplantPage() {
     return (
         <main className="w-full">
@@ -69,20 +109,10 @@ export default function ImplantPage() {
                             Flapless Implant
                         </span>
 
-                        {/* #STYLE: 뱃지가 오른쪽 밖으로 튀어나갈 수 있도록 relative 유지하며 우측 여백(pr) 추가 */}
                         <div className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]">
-                            {/* 배지 */}
-                            <div className="absolute z-10 -right-[20px] lg:right-[-10px] top-0 -translate-y-1/2 w-[86px] h-[86px] lg:w-[173px] lg:h-[173px]">
-                                <Image
-                                    src="/images/i_badge_01.png"
-                                    alt="무절개 임플란트"
-                                    fill
-                                    sizes="173px"
-                                    className="object-contain"
-                                />
-                            </div>
+                            {/* #STYLE: 빛나는 효과가 포함된 뱃지 교체 */}
+                            <ShinyBadge src="/images/i_badge_01.png" alt="무절개 임플란트" />
 
-                            {/* 박스 본체 */}
                             <div className="w-full bg-[#f8f8f8] rounded-tl-[10px] rounded-bl-[20px] lg:rounded-l-[30px] shadow-md overflow-hidden flex flex-col md:flex-row relative z-0">
                                 <div className="relative w-full h-[208px] md:w-[45%] md:h-auto md:min-h-[235px] lg:w-[413px] shrink-0">
                                     <Image
@@ -113,7 +143,6 @@ export default function ImplantPage() {
                 </div>
             </section>
 
-            {/* #TODO: bottombox rounded-5로 변경 정렬 수정*/}
             {/* 장점 소개 */}
             <Features
                 topSubtitle="BENEFITS"
@@ -134,20 +163,10 @@ export default function ImplantPage() {
                             1day Implant
                         </span>
 
-                        {/* #STYLE: 뱃지가 오른쪽 밖으로 튀어나갈 수 있도록 relative 유지하며 우측 여백(pr) 추가 */}
                         <div className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]">
-                            {/* 배지 */}
-                            <div className="absolute z-10 -right-[20px] lg:right-[-10px] top-0 -translate-y-1/2 w-[86px] h-[86px] lg:w-[173px] lg:h-[173px]">
-                                <Image
-                                    src="/images/i_badge_02.png"
-                                    alt="당일 임플란트"
-                                    fill
-                                    sizes="173px"
-                                    className="object-contain"
-                                />
-                            </div>
+                            {/* #STYLE: 빛나는 효과가 포함된 뱃지 교체 */}
+                            <ShinyBadge src="/images/i_badge_02.png" alt="당일 임플란트" />
 
-                            {/* #TODO: 이미지 포지션 조정 뱃지 흐림 확인 */}
                             <div className="w-full bg-[#f8f8f8] rounded-tl-[10px] rounded-bl-[20px] lg:rounded-l-[30px] shadow-md overflow-hidden flex flex-col md:flex-row relative z-0">
                                 <div className="relative w-full h-[208px] md:w-[45%] md:h-auto md:min-h-[235px] lg:w-[413px] shrink-0">
                                     <Image
@@ -181,16 +200,16 @@ export default function ImplantPage() {
             </section>
 
             {/* 과거 현재 모습 비교 섹션 */}
-            <section className="w-full bg-primary pb-[60px] -mt-[1px] lg:pb-[140px] px-[20px]">
+            <section className="w-full bg-primary pb-[60px] lg:pb-[140px] px-[20px]">
                 <div className="mx-auto max-w-[1000px] flex flex-col items-center">
-                    {/* 상자 영역 */}
+                    {/* 상자 영역 (불필요한 이미지 전부 제거 & 치수 완벽 맞춤) */}
                     <div className="flex items-center justify-center">
                         {/* 과거 박스 */}
-                        <div className="w-[130px] h-[163px] lg:w-[289px] lg:h-[210px] bg-[#D4D4D4] flex flex-col items-center justify-center px-[10px] lg:px-[20px] text-center relative z-10 shadow-sm">
-                            <span className="text-white font-bold text-[13px]/[27px] lg:text-[25px]/[27px] mb-[6px] lg:mb-[19px]">
+                        <div className="w-[130px] h-[163px] lg:w-[289px] lg:h-[210px] bg-[#D4D4D4] flex flex-col items-center justify-center px-[10px] lg:px-[20px] text-center z-10 shrink-0 shadow-sm">
+                            <span className="text-white font-bold text-[13px] lg:text-[24px] mb-[6px] lg:mb-[20px]">
                                 과거
                             </span>
-                            <p className="text-white text-[13px]/[21px] lg:text-[15px]/[25px] break-keep">
+                            <p className="text-white text-[10px]/[18px] lg:text-[15px]/[25px] font-medium break-keep">
                                 발치 후, 뼈가 완전히
                                 <br className="block lg:hidden" />
                                 회복될 때까지 <br className="hidden lg:block" />
@@ -202,9 +221,8 @@ export default function ImplantPage() {
                             </p>
                         </div>
 
-                        {/* 중간 SVG 그라디언트 브릿지 */}
-                        {/* #STYLE: 브라우저 렌더링 틈새를 없애기 위해 음수 마진(-mx-[2px])을 강하게 주고, 과거/현재 박스 밑(z-0)으로 깔아 겹치게 만듦 */}
-                        <div className="w-[17px] h-[203px] lg:w-[48px] lg:h-[257px] shrink-0 -mx-[2px] relative z-0">
+                        {/* 중간 SVG 그라디언트 브릿지 (브라우저 사이 빈틈 방지용 -mx-[1px]) */}
+                        <div className="w-[17px] h-[203px] lg:w-[48px] lg:h-[257px] shrink-0 z-20 -mx-[1px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-full h-full block"
@@ -230,11 +248,11 @@ export default function ImplantPage() {
                         </div>
 
                         {/* 현재 박스 */}
-                        <div className="w-[175px] h-[203px] lg:w-[395px] lg:h-[257px] bg-white flex flex-col items-center justify-center px-[10px] lg:px-[20px] text-center relative z-20 shadow-lg">
-                            <div className="bg-primary text-white font-bold text-[15px]/[27px] lg:text-[25px] px-[27px]  lg:px-[40px] lg:py-[10px] rounded-full mb-[17px] lg:mb-[25px]">
+                        <div className="w-[175px] h-[203px] lg:w-[395px] lg:h-[257px] bg-white flex flex-col items-center justify-center px-[10px] lg:px-[20px] text-center z-30 shadow-lg shrink-0">
+                            <div className="bg-primary text-white font-bold text-[14px] lg:text-[22px] px-[20px] py-[4px] lg:px-[40px] lg:py-[10px] rounded-full mb-[12px] lg:mb-[25px]">
                                 현재
                             </div>
-                            <p className="text-[13px]/[21px] lg:text-[15px]/[25px] font-medium text-primary-dark break-keep tracking-tight">
+                            <p className="text-[11px]/[18px] lg:text-[18px]/[30px] font-medium text-primary-dark break-keep tracking-tight">
                                 치료 기법 발전 / 빠른 시기에도
                                 <br />
                                 안정적인 식립 가능
@@ -243,7 +261,7 @@ export default function ImplantPage() {
                     </div>
 
                     {/* 하단 텍스트 */}
-                    <p className="mt-[25px] lg:mt-[60px] text-center text-[13px]/[23px] lg:text-[20px]/[35px] text-white font-medium break-keep">
+                    <p className="mt-[25px] lg:mt-[50px] text-center text-[12px]/[22px] lg:text-[18px]/[32px] text-white font-medium break-keep">
                         <span className="lg:hidden">
                             정밀한 진단과 충분한 치료 계획을 바탕으로
                             <br />
@@ -260,7 +278,6 @@ export default function ImplantPage() {
                 </div>
             </section>
 
-            {/* #TODO: 배경 제거 */}
             {/* 임플란트 과정 */}
             <ProcessSteps topSubtitle="PROCESS" topTitle="임플란트 과정" items={PROCESS_ITEMS} />
 
