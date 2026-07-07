@@ -81,7 +81,7 @@ export default function GeneralPage() {
                 </div>
             </section>
 
-            {/* 사랑니 발치 10만건 정렬 확인 밴드 */}
+            {/* 사랑니 발치 10만건 정렬 확인 모바일에서도 10 만건이 items-end로 정렬되어야함 */}
             {/* #TODO:  */}
             <section className="w-full bg-primary py-[65px] pb-[95px] px-[24px] lg:py-[100px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-center text-white">
@@ -99,26 +99,27 @@ export default function GeneralPage() {
 
             {/* 사랑니 발치가 필요한 경우 */}
             {/* #TODO: 배경 확인 */}
+            {/* #TODO: 줄바꿈 확인 */}
             <section
-                className="w-full bg-cover bg-center py-[62px] px-[24px] lg:py-[120px]"
+                className="w-full bg-cover bg-center py-[62px] px-[24px] lg:py-[140px]"
                 style={{ backgroundImage: "url('/images/bg_stone_02.jpg')" }}
             >
-                <div className="mx-auto max-w-[1000px] flex flex-col items-center">
-                    <div className="w-[274px] h-[34px] lg:w-[378px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
+                <div className="mx-auto max-w-[848px] flex flex-col items-center">
+                    <div className="w-[274px] h-[34px] lg:w-[500px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
                         <span className="text-[20px]/[35px] lg:text-[30px]/[35px] font-medium mr-2 ">
                             사랑니 발치가 필요한 경우
                         </span>
                     </div>
 
-                    <ul className="grid grid-cols-2 gap-x-[16px] gap-y-[18px] lg:gap-x-[40px] lg:gap-y-[24px] mt-[36px] lg:mt-[56px] w-full max-w-[860px]">
+                    <ul className="grid grid-cols-2   gap-y-[18px]  lg:gap-y-[27px] mt-[36px] lg:mt-[56px] w-full ">
                         {EXTRACTION_CASES.map((item) => (
-                            <li key={item} className="flex items-start gap-[10px]">
+                            <li key={item} className="flex items-start gap-[5px] lg:gap-[10px]">
                                 <img
                                     src="/images/i_check_g.svg"
                                     alt=""
-                                    className="w-[20px] lg:w-[24px] shrink-0 mt-[1px]"
+                                    className="w-[17px] lg:w-[34px] shrink-0 mt-[4px] rounded-[10px]"
                                 />
-                                <span className="text-[14px]/[22px] lg:text-[16px]/[26px] font-medium text-primary-dark break-keep">
+                                <span className="text-[14px]/[22px] lg:text-[20px]/[22px] font-medium text-primary-dark break-keep">
                                     {item}
                                 </span>
                             </li>
@@ -126,20 +127,26 @@ export default function GeneralPage() {
                     </ul>
 
                     {/* 더보기 영역 */}
-                    <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-[28px] lg:gap-[60px] mt-[60px] lg:mt-[110px]">
+                    {/* <div className="w-full flex px-[26px] lg:px-0 flex-col-reverse lg:flex-row items-end justify-between gap-[28px] lg:gap-[30px] mt-[60px] lg:mt-[110px]"> */}
+                    <div className="w-full flex lg:px-0 flex-col-reverse lg:flex-row items-end justify-between gap-[28px] lg:gap-[30px] mt-[60px] lg:mt-[110px]">
                         <div className="w-full lg:max-w-[480px]">
                             <span className="block w-full h-[1px] bg-primary" />
-                            <span className="block text-[14px] lg:text-[16px] font-semibold text-primary-dark mt-[24px] lg:mt-[40px]">
+                            {/* #ISSUE: 더보기 버튼은 없어져도 될 것 같아서 없애는걸로 협의 함 일단 주석 처리 */}
+                            {/* <button
+                                type="button"
+                                className="block text-[12px] lg:text-[16px] font-semibold text-[#626262] "
+                            >
                                 [더보기]
-                            </span>
-                            <p className="mt-[16px] lg:mt-[28px] text-[13px]/[22px] lg:text-[15px]/[26px] font-medium text-primary-dark break-keep">
+                            </button> */}
+                            <p className=" text-[12px]/[22px] lg:text-[15px]/[25px] font-medium text-[#626262] break-keep mt-[24px] lg:mt-[60px] tracking-tight">
                                 매복된 사랑니는 위치나 방향에 따라 인접치아를 손상시킬 수 있으며, 염증을 유발할 수
-                                있기에 발치를 시행해야 할 수 있습니다. 저희 치과에서는 정확한 위치와 상태를 파악하기
-                                위해 X-Ray 및 CT를 통해 신중하게 치료 계획을 수립하고 있습니다.
+                                있기에 발치를 시행해야 할 수 있습니다. <br className="block md:hidden" />
+                                저희 치과에서는 정확한 위치와 상태를 파악하기 위해 X- Ray 및 CT를 통해 신중하게 치료
+                                계획을 수립하고 있습니다.
                             </p>
                         </div>
-
-                        <div className="relative w-full h-[200px] lg:w-[406px] lg:h-[263px] shrink-0 overflow-hidden rounded-[6px]">
+                        {/* #TODO: 모바일에서 이미지 포지션 가운데 아래로 바꾸기 */}
+                        <div className="relative w-full h-[133px] lg:w-[428px] lg:h-[264px] shrink-0 overflow-hidden rounded-[6px]">
                             <Image
                                 src="/images/img_xray.jpg"
                                 alt="X-Ray 촬영 장비"
@@ -153,25 +160,29 @@ export default function GeneralPage() {
             </section>
 
             {/* 발치 후 주의사항 */}
-            <section className="w-full bg-white py-[62px] px-[24px] lg:py-[120px]">
-                <div className="mx-auto max-w-[1000px] flex flex-col items-center">
-                    <div className="w-[274px] h-[34px] lg:w-[378px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
+            {/* #TODO: 모바일에서는 그냥 화이트 배경 pc에서는 stone배경 깔림 */}
+            <section className="w-full bg-white py-[65px] px-[24px] lg:pt-[140px] lg:pb-[110px]">
+                <div className="mx-auto max-w-[910px] flex flex-col items-center">
+                    <div className="w-[300px] h-[44px] lg:w-[550px] lg:h-[62px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
                         <span className="text-[20px]/[35px] lg:text-[30px]/[35px] font-medium mr-2 ">
                             사랑니 발치 후 주의사항
                         </span>
                     </div>
 
-                    <div className="w-full mt-[36px] lg:mt-[60px]">
-                        <div className="w-full max-w-[760px] mx-auto bg-[#F7F8F6] rounded-[16px] px-[28px] py-[28px] lg:px-[100px] lg:py-[44px]">
+                    <div className="w-full px-[14px] lg:px-0 mt-[33px] lg:mt-[50px]">
+                        <div
+                            className="w-full max-w-[910px] mx-auto bg-[#F9F9F8] rounded-[10px] pl-[40px]
+                        pr-[10px] py-[35px] lg:pl-[140px] lg:pt-[30px] lg:pb-[40px]"
+                        >
                             <ul className="flex flex-col gap-[14px] lg:gap-[16px]">
                                 {CAUTION_ITEMS.map((item) => (
-                                    <li key={item} className="flex items-start gap-[12px]">
+                                    <li key={item} className="flex items-start gap-[8px]">
                                         <img
                                             src="/images/i_check_g.svg"
                                             alt=""
-                                            className="w-[20px] lg:w-[22px] shrink-0 mt-[1px]"
+                                            className="w-[16px] lg:w-[22px] shrink-0 mt-[4px]"
                                         />
-                                        <span className="text-[14px]/[22px] lg:text-[16px]/[26px] font-medium text-primary-dark break-keep">
+                                        <span className="text-[13px]/[22px] lg:text-[16px]/[26px] font-medium text-primary-dark break-keep tracking-tighter">
                                             {item}
                                         </span>
                                     </li>
