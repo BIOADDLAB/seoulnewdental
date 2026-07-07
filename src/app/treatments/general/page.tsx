@@ -34,7 +34,7 @@ function AnimatedCounter({ targetNumber }: { targetNumber: number }) {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    const duration = 1200;
+                    const duration = 400;
                     const interval = 40;
                     let elapsed = 0;
 
