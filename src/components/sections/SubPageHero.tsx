@@ -1,11 +1,9 @@
-// #ISSUE: 서브히어로 패딩 규격(40-40-270) 미준수 및 \n 문자열 치환 오류
-// #STYLE: lg 구간 패딩 pt-[40px] px-[40px] pb-[270px] 적용, max-w 해제하여 전체화면 비율 대응, 정규식 /\\n|\n/ 적용
 import React from 'react';
 import Image from 'next/image';
 
 interface SubPageHeroProps {
     title: string;
-    desc: string;
+    desc: string | React.ReactNode;
     bgImageName: 'bg_sub_01' | 'bg_sub_02' | 'bg_sub_03' | 'bg_sub_04' | 'bg_sub_05' | 'bg_about';
     imagePos?: string;
 }
@@ -45,12 +43,14 @@ export default function SubPageHero({ title, desc, bgImageName, imagePos }: SubP
                             {title}
                         </h2>
                         <p className="text-[13px]/[20px] font-semibold md:text-[18px]/[28px] lg:text-[25px]/[30px] max-w-[1000px] text-center">
-                            {desc.split(/\\n|\n/).map((line, idx, arr) => (
-                                <React.Fragment key={idx}>
-                                    {line}
-                                    {idx < arr.length - 1 && <br />}
-                                </React.Fragment>
-                            ))}
+                            {typeof desc === 'string'
+                                ? desc.split(/\\n|\n/).map((line, idx, arr) => (
+                                      <React.Fragment key={idx}>
+                                          {line}
+                                          {idx < arr.length - 1 && <br />}
+                                      </React.Fragment>
+                                  ))
+                                : desc}
                         </p>
                     </div>
                 </div>

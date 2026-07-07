@@ -57,7 +57,12 @@ export default function AboutPage() {
         <main className="w-full">
             <SubPageHero
                 title="NEW치과 소개"
-                desc="정확한 진단과 정직한 진료로 오래도록 건강한 미소를 함께합니다."
+                desc={
+                    <>
+                        정확한 진단과 정직한 진료로 <br className="block lg:hidden" />
+                        오래도록 건강한 미소를 함께합니다.
+                    </>
+                }
                 bgImageName="bg_about"
             />
 

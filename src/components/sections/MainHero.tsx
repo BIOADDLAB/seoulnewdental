@@ -87,6 +87,7 @@ export default function MainHero() {
                                 src={slide.moImage}
                                 alt="히어로 배경 모바일"
                                 fill
+                                quality={100}
                                 priority={slide.id === 1}
                                 sizes="(max-width: 767px) 100vw, 1920px"
                                 className={`object-cover ${slide.moImagePos}`}
