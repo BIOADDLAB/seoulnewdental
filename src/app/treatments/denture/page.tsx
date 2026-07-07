@@ -66,7 +66,7 @@ const DENTURE_TYPES = [
                 </span>
             </>
         ),
-        img: '/images/img_denture_01.jpg',
+        img: '/images/img_d_01.jpg',
     },
     {
         id: 2,
@@ -90,7 +90,7 @@ const DENTURE_TYPES = [
                 </span>
             </>
         ),
-        img: '/images/img_denture_02.jpg',
+        img: '/images/img_d_02.jpg',
     },
 ];
 
