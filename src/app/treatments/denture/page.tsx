@@ -5,6 +5,7 @@ import SectionHeading from '@/components/common/SectionHeading';
 import IntroBand from '@/components/sections/IntroBand';
 import ProcessSteps, { ProcessItem } from '@/components/sections/ProcessSteps';
 import ContactSection from '@/components/sections/ContactSection';
+import Reveal from '@/components/common/Reveal';
 
 const BENEFIT_ITEMS = [
     {
@@ -205,16 +206,23 @@ export default function DenturePage() {
                 style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}
             >
                 <div className="mx-auto max-w-[1100px] flex flex-col items-center">
-                    <SectionHeading
-                        subtitle="BENEFITS"
-                        title="장점 소개"
-                        subtitleClassName="!text-[13px] lg:!text-[20px]"
-                        titleClassName="!text-[25px]/[35px] lg:!text-[30px]/[35px]"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="BENEFITS"
+                            title="장점 소개"
+                            subtitleClassName="!text-[13px] lg:!text-[20px]"
+                            titleClassName="!text-[25px]/[35px] lg:!text-[30px]/[35px]"
+                        />
+                    </Reveal>
 
                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-[40px] md:gap-[20px] lg:gap-[33px] mt-[48px] lg:mt-[70px]">
-                        {BENEFIT_ITEMS.map((item) => (
-                            <div key={item.id} className={`flex flex-col items-center text-center ${item.orderClass}`}>
+                        {BENEFIT_ITEMS.map((item, idx) => (
+                            <Reveal
+                                key={item.id}
+                                variant="fade-up"
+                                delay={idx * 100}
+                                className={`flex flex-col items-center text-center ${item.orderClass}`}
+                            >
                                 <div
                                     className={`w-full max-w-[274px] lg:max-w-[313px] rounded-full  lg:py-[10px] flex justify-center items-center ${
                                         item.isHighlight
@@ -229,7 +237,7 @@ export default function DenturePage() {
                                 <p className="mt-[24px] lg:mt-[30px] text-[14px]/[22px] lg:text-[15px]/[25px] font-medium text-primary-dark whitespace-pre-line break-keep px-[10px]">
                                     {item.desc}
                                 </p>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -239,11 +247,13 @@ export default function DenturePage() {
             {/* #TODO: 이미지 넘버 확인 */}
             <section className="w-full bg-white py-[62px] px-[16px] lg:px-[24px] lg:py-[140px]">
                 <div className="mx-auto max-w-[308px] lg:max-w-[902px] flex flex-col items-center">
-                    <SectionHeading
-                        subtitle="DENTURE PROCEDURE"
-                        title="틀니 방법"
-                        desc="틀니는 잔존 치아에 따라 종류가 달라집니다!"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="DENTURE PROCEDURE"
+                            title="틀니 방법"
+                            desc="틀니는 잔존 치아에 따라 종류가 달라집니다!"
+                        />
+                    </Reveal>
 
                     <div className="w-full border border-primary/20 rounded-t-[3px] lg:rounded-t-[10px] mt-[40px] lg:mt-[50px]  lg:border-primary/50 overflow-hidden">
                         {/* 헤더 (전체틀니 / 부분틀니) */}
@@ -263,8 +273,9 @@ export default function DenturePage() {
                         {/* 본문 콘텐츠 */}
                         <div className="grid grid-cols-2 bg-white">
                             {DENTURE_TYPES.map((type, idx) => (
-                                <div
+                                <Reveal
                                     key={`content-${type.id}`}
+                                    variant={idx === 0 ? 'slide-right' : 'slide-left'}
                                     className={`flex flex-col items-center text-center pt-[12px] pb-[20px] lg:pt-[30px] lg:px-[32px] lg:pb-[50px]  ${
                                         idx === 0 ? 'border-r border-primary/20' : ''
                                     }`}
@@ -293,7 +304,7 @@ export default function DenturePage() {
                                     <p className="w-full px-[2px] lg:px-0 text-[13px]/[20px] lg:text-[15px]/[25px] font-normal text-primary-dark whitespace-pre-line break-keep tracking-tight lg:tracking-normal">
                                         {type.desc}
                                     </p>
-                                </div>
+                                </Reveal>
                             ))}
                         </div>
                     </div>

@@ -1,9 +1,11 @@
 // #PAGE: 특수진료 페이지
 import SubPageHero from '@/components/sections/SubPageHero';
 import SectionHeading from '@/components/common/SectionHeading';
+import VerticalDivider from '@/components/common/VerticalDivider';
 import IntroBand from '@/components/sections/IntroBand';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import ContactSection from '@/components/sections/ContactSection';
+import Reveal from '@/components/common/Reveal';
 
 const RECOMMEND_CLASS = 'text-[15px]/[24px] lg:text-[20px]/[35px] font-medium break-keep text-center';
 
@@ -27,18 +29,26 @@ export default function SpecialPage() {
                 bgImage="/images/bg_band_02.jpg"
             />
 
-            <section className="w-full bg-primary pt-[62px] px-[24px] pb-[66px] lg:py-[100px]">
+            <section className="w-full bg-primary pt-[62px] px-[24px] pb-[66px] lg:py-[110px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-white">
-                    <SectionHeading
-                        subtitle="RECOMMENDATIONS"
-                        title="이런 경우에 추천됩니다!"
-                        subtitleClassName="font-accent text-[15px] mb-[9px] font-normal lg:text-[20px] text-white lg:mb-[14px]"
-                        titleClassName="text-[20px]/[35px] font-medium lg:text-[30px]/[50px] text-white"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="RECOMMENDATIONS"
+                            title="이런 경우에 추천됩니다!"
+                            subtitleClassName="font-accent text-[15px] mb-[9px] font-normal lg:text-[20px] text-white lg:mb-[14px]"
+                            titleClassName="text-[20px]/[35px] font-medium lg:text-[30px]/[50px] text-white"
+                        />
+                    </Reveal>
                     <ul className="flex flex-col items-center mt-[15px] lg:mt-[20px]">
-                        <li className={RECOMMEND_CLASS}>눈에 띄지 않는 교정을 원하는 경우</li>
-                        <li className={RECOMMEND_CLASS}>직장 및 일상생활에서 심미가 중요한 경우</li>
-                        <li className={RECOMMEND_CLASS}>벌어진 치아 등 배열 개선이 필요한 경우</li>
+                        {[
+                            '눈에 띄지 않는 교정을 원하는 경우',
+                            '직장 및 일상생활에서 심미가 중요한 경우',
+                            '벌어진 치아 등 배열 개선이 필요한 경우',
+                        ].map((text, idx) => (
+                            <Reveal key={text} as="li" variant="fade-up" delay={idx * 80} className={RECOMMEND_CLASS}>
+                                {text}
+                            </Reveal>
+                        ))}
                     </ul>
                 </div>
             </section>
@@ -116,18 +126,26 @@ export default function SpecialPage() {
                 bgImage="/images/bg_band_03.jpg"
             />
 
-            <section className="w-full bg-primary pt-[62px] px-[24px] pb-[66px] lg:py-[100px]">
+            <section className="w-full bg-primary pt-[62px] px-[24px] pb-[66px] lg:py-[110px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-white">
-                    <SectionHeading
-                        subtitle="RECOMMENDATIONS"
-                        title="이런 경우에 추천됩니다!"
-                        subtitleClassName="font-accent text-[15px] mb-[9px] font-normal lg:text-[20px] text-white lg:mb-[14px]"
-                        titleClassName="text-[20px]/[35px] font-medium lg:text-[30px]/[50px] text-white"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="RECOMMENDATIONS"
+                            title="이런 경우에 추천됩니다!"
+                            subtitleClassName="font-accent text-[15px] mb-[9px] font-normal lg:text-[20px] text-white lg:mb-[14px]"
+                            titleClassName="text-[20px]/[35px] font-medium lg:text-[30px]/[50px] text-white"
+                        />
+                    </Reveal>
                     <ul className="flex flex-col items-center mt-[15px] lg:mt-[20px]">
-                        <li className={RECOMMEND_CLASS}>자연스럽고 티나지 않는 보철을 원하는 경우</li>
-                        <li className={RECOMMEND_CLASS}>금속보철이 부담스러운 경우</li>
-                        <li className={RECOMMEND_CLASS}>오랫동안 사용할 수 있는 보철을 원하는 경우</li>
+                        {[
+                            '자연스럽고 티나지 않는 보철을 원하는 경우',
+                            '금속보철이 부담스러운 경우',
+                            '오랫동안 사용할 수 있는 보철을 원하는 경우',
+                        ].map((text, idx) => (
+                            <Reveal key={text} as="li" variant="fade-up" delay={idx * 80} className={RECOMMEND_CLASS}>
+                                {text}
+                            </Reveal>
+                        ))}
                     </ul>
                 </div>
             </section>
@@ -184,45 +202,59 @@ export default function SpecialPage() {
             {/* 치아 성형 */}
             <section className="w-full bg-white py-[60px] px-[20px] lg:py-[140px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center">
-                    <SectionHeading
-                        subtitle="DENTAL VENEERS"
-                        title="치아 성형"
-                        titleClassName="lg:mb-[20px]"
-                        desc={
-                            <>
-                                <span className="lg:hidden">{`치아의 형태와 균형을 간단하게 \n다듬어 인상을 개선하는 시술`}</span>
-                                <span className="hidden lg:inline block">
-                                    치아의 형태와 균형을 간단하게 다듬어 인상을 개선하는 시술
-                                </span>
-                            </>
-                        }
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="DENTAL VENEERS"
+                            title="치아 성형"
+                            titleClassName="lg:mb-[20px]"
+                            desc={
+                                <>
+                                    <span className="lg:hidden">{`치아의 형태와 균형을 간단하게 \n다듬어 인상을 개선하는 시술`}</span>
+                                    <span className="hidden lg:inline block">
+                                        치아의 형태와 균형을 간단하게 다듬어 인상을 개선하는 시술
+                                    </span>
+                                </>
+                            }
+                        />
+                    </Reveal>
 
-                    <span className="block w-[1px] h-[15px] bg-primary-dark mt-[11px] mb-[17px] lg:my-[20px]" />
+                    <VerticalDivider spacing="both" />
                     {/* TODO: 그라디언트 시안 넓이 다시 확인 */}
-                    <div className="w-[274px] h-[34px] lg:w-[378px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]">
+                    <Reveal
+                        variant="scale-in"
+                        className="w-[274px] h-[34px] lg:w-[378px] lg:h-[47px] flex items-center justify-center text-white bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#769283_20%,#769283_80%,rgba(255,255,255,0)_100%)]"
+                    >
                         <span className="text-[20px]/[35px] lg:text-[30px]/[35px] font-medium mr-2 ">추천</span>
                         <span className="font-point text-[30px]/[20px] lg:text-[50px]/[35px] block mt-[6px]">
                             Point!
                         </span>
-                    </div>
+                    </Reveal>
 
                     <div className="flex flex-col items-center gap-[10px] lg:gap-[20px] mt-[43px] lg:mt-[56px]">
-                        {['앞니 모양이 고르지 않는 경우', '작은 깨짐이나 마모가 있는 경우'].map((text) => (
-                            <div key={text} className="flex items-center gap-[10px] lg:gap-[14px]">
+                        {['앞니 모양이 고르지 않는 경우', '작은 깨짐이나 마모가 있는 경우'].map((text, idx) => (
+                            <Reveal
+                                key={text}
+                                variant="fade-up"
+                                delay={idx * 90}
+                                className="flex items-center gap-[10px] lg:gap-[14px]"
+                            >
                                 <img src="/images/i_check_g.svg" alt="check" />
                                 <span className="text-[15px]/[24px] lg:text-[20px]/[30px] font-medium break-keep tracking-tighter">
                                     {text}
                                 </span>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
 
-                    <p className="mt-[32px] lg:mt-[56px] text-center text-[13px]/[21px] lg:text-[18px]/[30px] font-medium text-primary-dark break-keep tracking-tight">
+                    <Reveal
+                        as="p"
+                        variant="fade-up"
+                        className="mt-[32px] lg:mt-[56px] text-center text-[13px]/[21px] lg:text-[18px]/[30px] font-medium text-primary-dark break-keep tracking-tight"
+                    >
                         치아 성형은 치아삭제를 최소화하여 진행할 수 있으며, <br className="block lg:hidden" />
                         비교적 간단한 시술로 <br className="hidden lg:block" />
                         빠른 개선이 가능하다는 장점이 있습니다!
-                    </p>
+                    </Reveal>
                 </div>
             </section>
 

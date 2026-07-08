@@ -4,6 +4,7 @@ import Image from 'next/image';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SectionHeading from '@/components/common/SectionHeading';
 import ContactSection from '@/components/sections/ContactSection';
+import Reveal from '@/components/common/Reveal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -69,16 +70,21 @@ export default function AboutPage() {
             {/* 약속 영역 */}
             <section className="w-full py-[60px] px-[32px] lg:py-[95px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center">
-                    <SectionHeading subtitle="PROMISE" title="서울NEW치과는 약속합니다." isLine />
+                    <Reveal variant="fade-up">
+                        <SectionHeading subtitle="PROMISE" title="서울NEW치과는 약속합니다." isLine />
+                    </Reveal>
 
                     <div className="mt-[28px] lg:mt-[30px] flex flex-col gap-[24px] lg:gap-[32px] text-center">
                         {PROMISE_LINES.map((line, idx) => (
-                            <p
+                            <Reveal
                                 key={idx}
+                                as="p"
+                                variant="fade-up"
+                                delay={idx * 100}
                                 className="text-[15px]/[24px] lg:text-[15px]/[25px] text-primary-dark break-keep"
                             >
                                 {line}
-                            </p>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -87,17 +93,21 @@ export default function AboutPage() {
             {/* 신뢰 영역 */}
             <section className="w-full bg-primary py-[62px] px-[24px] lg:py-[130px]">
                 <div className="mx-auto max-w-[1000px] flex flex-col items-center">
-                    <SectionHeading
-                        subtitle="SEOUL NEW DENTAL"
-                        title="수많은 임상경험을 바탕으로 신뢰를 제공합니다!"
-                        titleClassName="text-[25px]/[34px] font-bold lg:text-[30px]/[35px] lg:font-medium text-white"
-                        subtitleClassName="font-accent text-[13px] font-normal lg:text-[30px] text-white"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="SEOUL NEW DENTAL"
+                            title="수많은 임상경험을 바탕으로 신뢰를 제공합니다!"
+                            titleClassName="text-[25px]/[34px] font-bold lg:text-[30px]/[35px] lg:font-medium text-white"
+                            subtitleClassName="font-accent text-[13px] font-normal lg:text-[30px] text-white"
+                        />
+                    </Reveal>
 
                     <div className="w-full flex flex-col gap-[22px] lg:gap-[30px] mt-[36px] lg:mt-[60px] ">
-                        {TRUST_ITEMS.map((item) => (
-                            <div
+                        {TRUST_ITEMS.map((item, idx) => (
+                            <Reveal
                                 key={item.id}
+                                variant={idx % 2 === 0 ? 'slide-right' : 'slide-left'}
+                                delay={idx * 100}
                                 className="w-full bg-cream rounded-t-[20px] rounded-bl-[20px] shadow-md pt-[20px] px-[20px] pb-[25px]  lg:p-[22px] flex flex-col md:flex-row items-center gap-[14px] lg:gap-[60px]"
                             >
                                 <div className="relative w-full h-[114px] md:w-[360px] md:h-[192px] shrink-0 overflow-hidden rounded-[10px]">
@@ -121,7 +131,7 @@ export default function AboutPage() {
                                         {item.desc}
                                     </p>
                                 </div>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -135,12 +145,14 @@ export default function AboutPage() {
             >
                 {/* 타이틀 영역 */}
                 <div className="mx-auto max-w-[1320px] px-[24px] lg:px-10">
-                    <SectionHeading
-                        subtitle="SERVICES"
-                        title="진료과목"
-                        subtitleClassName="font-accent text-[13px] lg:text-[20px] lg:mb-0"
-                        titleClassName="text-[25px]/[35px] lg:text-[30px]/[35px] font-medium"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="SERVICES"
+                            title="진료과목"
+                            subtitleClassName="font-accent text-[13px] lg:text-[20px] lg:mb-0"
+                            titleClassName="text-[25px]/[35px] lg:text-[30px]/[35px] font-medium"
+                        />
+                    </Reveal>
                 </div>
 
                 <div className="mx-auto max-w-[1320px] pl-[24px] lg:pl-10 mt-[35px] lg:mt-[60px]">

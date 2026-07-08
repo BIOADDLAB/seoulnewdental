@@ -2,6 +2,8 @@
 // #STYLE: 2xl:h-[700px] 적용
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import VerticalDivider from '@/components/common/VerticalDivider';
+import Reveal from '@/components/common/Reveal';
 
 interface IntroBandProps {
     topLabel?: ReactNode;
@@ -65,57 +67,63 @@ export default function IntroBand({
                     isDark ? 'text-white' : 'text-primary-dark'
                 } ${positionClassName ?? 'top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'}`}
             >
-                {topLabel && <span className={`text-[15px] ${topLabelClassName ?? ''}`}>{topLabel}</span>}
+                <Reveal variant="fade-up" className="flex flex-col items-center">
+                    {topLabel && <span className={`text-[15px] ${topLabelClassName ?? ''}`}>{topLabel}</span>}
 
-                {accent && (
-                    <span
-                        className={`font-accent text-[20px] lg:text-[30px] uppercase mt-[6px] ${accentClassName ?? ''}`}
-                    >
-                        {accent}
-                    </span>
-                )}
-
-                {isLine && (
-                    <span
-                        className={`mb-[20px] lg:mb-[26px] w-[1px] h-[16px] lg:h-[22px] ${lineClassName ?? (isDark ? 'bg-white' : 'bg-primary-dark')}`}
-                    />
-                )}
-
-                {title && (
-                    <h3
-                        className={`text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep ${titleClassName ?? ''}`}
-                    >
-                        {title}
-                    </h3>
-                )}
-
-                {strong && desc ? (
-                    <p className="mt-2 text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep">
-                        <strong
-                            className={`block lg:inline text-[15px] lg:text-[20px]/[35px] font-medium mb-[14px] lg:mb-0 lg:mr-1 ${strongClassName ?? ''}`}
+                    {accent && (
+                        <span
+                            className={`font-accent text-[20px] lg:text-[30px] uppercase mt-[6px] ${accentClassName ?? ''}`}
                         >
-                            {strong}
-                        </strong>
-                        <span className={`inline ${descClassName ?? ''}`}>{desc}</span>
-                    </p>
-                ) : (
-                    <>
-                        {strong && (
+                            {accent}
+                        </span>
+                    )}
+
+                    {isLine && (
+                        <VerticalDivider
+                            length="h-[16px] lg:h-[22px]"
+                            color={lineClassName ?? (isDark ? 'bg-white' : 'bg-primary-dark')}
+                            spacing="bottom"
+                        />
+                    )}
+
+                    {title && (
+                        <h3
+                            className={`text-[25px]/[35px] lg:text-[30px]/[40px] font-semibold whitespace-pre-line break-keep ${titleClassName ?? ''}`}
+                        >
+                            {title}
+                        </h3>
+                    )}
+
+                    {strong && desc ? (
+                        <p
+                            className={`${isLine ? '' : 'mt-2'} text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep`}
+                        >
                             <strong
-                                className={`mt-2 text-[15px] font-medium! lg:text-[20px]/[25px] break-keep ${strongClassName ?? ''}`}
+                                className={`block lg:inline text-[15px] lg:text-[20px]/[35px] font-medium mb-[14px] lg:mb-0 lg:mr-1 ${strongClassName ?? ''}`}
                             >
                                 {strong}
                             </strong>
-                        )}
-                        {desc && (
-                            <p
-                                className={`text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep mt-[14px] lg:mt-[18px] ${descClassName ?? ''}`}
-                            >
-                                {desc}
-                            </p>
-                        )}
-                    </>
-                )}
+                            <span className={`inline ${descClassName ?? ''}`}>{desc}</span>
+                        </p>
+                    ) : (
+                        <>
+                            {strong && (
+                                <strong
+                                    className={`mt-2 text-[15px] font-medium! lg:text-[20px]/[25px] break-keep ${strongClassName ?? ''}`}
+                                >
+                                    {strong}
+                                </strong>
+                            )}
+                            {desc && (
+                                <p
+                                    className={`text-[15px]/[25px] lg:text-[20px]/[35px] font-medium whitespace-pre-line break-keep mt-[14px] lg:mt-[18px] ${descClassName ?? ''}`}
+                                >
+                                    {desc}
+                                </p>
+                            )}
+                        </>
+                    )}
+                </Reveal>
             </div>
         </section>
     );

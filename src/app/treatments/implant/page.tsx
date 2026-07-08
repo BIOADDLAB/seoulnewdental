@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import SubPageHero from '@/components/sections/SubPageHero';
 import SectionHeading from '@/components/common/SectionHeading';
+import VerticalDivider from '@/components/common/VerticalDivider';
 import IntroBand from '@/components/sections/IntroBand';
 import Features, { FeatureItem } from '@/components/sections/Features';
 import ProcessSteps, { ProcessItem } from '@/components/sections/ProcessSteps';
 import ContactSection from '@/components/sections/ContactSection';
+import Reveal from '@/components/common/Reveal';
 
 const BENEFIT_ITEMS: FeatureItem[] = [
     {
@@ -91,25 +93,30 @@ export default function ImplantPage() {
             />
 
             <section className="py-[60px] lg:py-[100px] flex flex-col items-center text-center">
-                <h3 className="text-[15px] mb-[5px]">SEOUL NEW DENTAL</h3>
-                <h2 className="font-accent text-[20px] lg:text-[30px] uppercase ">Clear Diagnosis</h2>
-                <span className="block w-[1px] h-[15px] bg-primary-dark/70 my-[25px] "></span>
-                <p className="text-[15px]/[24px] lg:text-[20px]/[35px] lg:font-medium">
-                    정확한 진단 위에 완성되는 결과 <br />
-                    정밀한 검사와 환자의 건강상태 및 구강상태를 <br />
-                    고려하여 임플란트 치료를 진행합니다.
-                </p>
+                <Reveal variant="fade-up" className="flex flex-col items-center">
+                    <h3 className="text-[15px] mb-[5px]">SEOUL NEW DENTAL</h3>
+                    <h2 className="font-accent text-[20px] lg:text-[30px] uppercase ">Clear Diagnosis</h2>
+                    <VerticalDivider color="bg-primary-dark/70" spacing="both" />
+                    <p className="text-[15px]/[24px] lg:text-[20px]/[35px] lg:font-medium">
+                        정확한 진단 위에 완성되는 결과 <br />
+                        정밀한 검사와 환자의 건강상태 및 구강상태를 <br />
+                        고려하여 임플란트 치료를 진행합니다.
+                    </p>
+                </Reveal>
             </section>
 
             {/* 무절개 임플란트 */}
-            <section className="w-full bg-primary pt-[60px] pb-[65px] px-[36px] lg:pt-[130px] lg:pb-[110px] overflow-hidden">
+            <section className="w-full bg-primary py-[65px]  px-[36px] lg:py-[130px]  overflow-hidden">
                 <div className="mx-auto max-w-[936px] flex flex-col items-center">
                     <div className="relative w-full flex flex-col items-center">
                         <span className="font-accent text-white text-[25px] font-normal lg:text-[30px] uppercase">
                             Flapless Implant
                         </span>
 
-                        <div className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]">
+                        <Reveal
+                            variant="slide-right"
+                            className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]"
+                        >
                             {/* #STYLE: 빛나는 효과가 포함된 뱃지 교체 */}
                             <ShinyBadge src="/images/i_badge_01.png" alt="무절개 임플란트" />
 
@@ -138,7 +145,7 @@ export default function ImplantPage() {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
             </section>
@@ -163,7 +170,10 @@ export default function ImplantPage() {
                             1day Implant
                         </span>
 
-                        <div className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]">
+                        <Reveal
+                            variant="slide-left"
+                            className="relative max-w-[910px] flex justify-start w-full mt-[45px] lg:mt-[30px] lg:pr-[30px]"
+                        >
                             {/* #STYLE: 빛나는 효과가 포함된 뱃지 교체 */}
                             <ShinyBadge src="/images/i_badge_02.png" alt="당일 임플란트" />
 
@@ -194,16 +204,16 @@ export default function ImplantPage() {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
             </section>
 
             {/* 과거 현재 모습 비교 섹션 */}
-            <section className="w-full bg-primary pb-[60px] lg:pb-[140px] px-[20px]">
+            <section className="w-full bg-primary pb-[60px] lg:pb-[140px] px-[20px] -mt-[1px]">
                 <div className="mx-auto max-w-[1000px] flex flex-col items-center">
                     {/* 상자 영역 (불필요한 이미지 전부 제거 & 치수 완벽 맞춤) */}
-                    <div className="flex items-center justify-center">
+                    <Reveal variant="scale-in" className="flex items-center justify-center">
                         {/* 과거 박스 */}
                         <div className="w-[130px] h-[163px] lg:w-[289px] lg:h-[210px] bg-[#D4D4D4] flex flex-col items-center justify-center px-[10px] lg:px-[20px] text-center z-10 shrink-0 shadow-sm">
                             <span className="text-white font-bold text-[13px] lg:text-[24px] mb-[6px] lg:mb-[20px]">
@@ -258,10 +268,14 @@ export default function ImplantPage() {
                                 안정적인 식립 가능
                             </p>
                         </div>
-                    </div>
+                    </Reveal>
 
                     {/* 하단 텍스트 */}
-                    <p className="mt-[25px] lg:mt-[50px] text-center text-[12px]/[22px] lg:text-[18px]/[32px] text-white font-medium break-keep">
+                    <Reveal
+                        as="p"
+                        variant="fade-up"
+                        className="mt-[25px] lg:mt-[50px] text-center text-[12px]/[22px] lg:text-[18px]/[32px] text-white font-medium break-keep"
+                    >
                         <span className="lg:hidden">
                             정밀한 진단과 충분한 치료 계획을 바탕으로
                             <br />
@@ -274,7 +288,7 @@ export default function ImplantPage() {
                             <br />
                             단축하고 일상 복귀를 돕는 것을 목표로 합니다!
                         </span>
-                    </p>
+                    </Reveal>
                 </div>
             </section>
 

@@ -4,6 +4,7 @@ import SectionHeading from '@/components/common/SectionHeading';
 import Features from '@/components/sections/Features';
 import ContactSection from '@/components/sections/ContactSection';
 import IntroBand from '@/components/sections/IntroBand';
+import Reveal from '@/components/common/Reveal';
 
 export default function ConservativePage() {
     return (
@@ -11,14 +12,14 @@ export default function ConservativePage() {
             <SubPageHero
                 title="보존진료 소개"
                 desc={'손상된 치아를 발치하지 않고 자연치아를 \n최대한 살려 기능을 유지하는 치료'}
-                bgImageName="bg_sub_01" // 서브이미지 01로 변경
+                bgImageName="bg_sub_01"
             />
 
             <IntroBand
                 topLabel="SEOUL NEW DENTAL"
                 accent="DOCTOR CONSULTATION"
-                accentClassName="mb-[25px]"
                 isLine
+                lineClassName="!mb-0 mt-[16px] !bg-white"
                 desc={
                     <>
                         <strong className="block font-medium! lg:inline lg:mr-[6px] mb-[14px] lg:mb-0">
@@ -42,18 +43,26 @@ export default function ConservativePage() {
             >
                 {/* 기존 충치 원인 내용 (수정 없음) */}
                 <div className="max-w-[1040px] mx-auto flex flex-col items-center">
-                    <SectionHeading subtitle="CAVITY CAUSES" title="충치는 왜 생기는 건가요?" />
-                    <p className="mt-[20px] text-center text-[14px] lg:text-[18px] font-medium leading-[1.6] break-keep">
-                        입안의 세균이 음식물을 분해하면서 산을 만들어
-                        <br />
-                        치아를 서서히 녹이면서 발생합니다.
-                    </p>
+                    <Reveal variant="fade-up">
+                        <SectionHeading subtitle="CAVITY CAUSES" title="충치는 왜 생기는 건가요?" />
+                        <p className="mt-[20px] text-center text-[14px] lg:text-[18px] font-medium leading-[1.6] break-keep">
+                            입안의 세균이 음식물을 분해하면서 산을 만들어
+                            <br />
+                            치아를 서서히 녹이면서 발생합니다.
+                        </p>
+                    </Reveal>
 
-                    <div className="relative w-[162px] h-[162px] border border-primary rounded-full lg:w-[269px] lg:h-[269px] mt-[40px] mb-[68px] lg:mt-[56px] lg:mb-[95px]">
+                    <Reveal
+                        variant="scale-in"
+                        className="relative w-[162px] h-[162px] border border-primary rounded-full lg:w-[269px] lg:h-[269px] mt-[40px] mb-[68px] lg:mt-[56px] lg:mb-[95px]"
+                    >
                         <img src="/images/img_why.png" className="rounded-full " alt="" />
-                    </div>
+                    </Reveal>
 
-                    <div className="w-full border border-primary rounded-[10px] px-[40px] pt-[60px] pb-[34px] lg:px-[67px] lg:pt-[67px] lg:pb-[42px] relative bg-white">
+                    <Reveal
+                        variant="fade-up"
+                        className="w-full border border-primary rounded-[10px] px-[40px] pt-[60px] pb-[34px] lg:px-[67px] lg:pt-[67px] lg:pb-[42px] relative bg-white"
+                    >
                         <div className="absolute top-[-18px] lg:top-[-22px] left-1/2 -translate-x-1/2 border border-primary rounded-full px-[28px] py-[6px] lg:py-[8px] lg:px-[42px] w-max mx-auto bg-[#F2F4F3]">
                             <span className="font-medium text-[20px]/[35px] lg:text-[30px]/[35px]">
                                 치료가 필요한 경우
@@ -70,7 +79,12 @@ export default function ConservativePage() {
                                     시린 느낌이 있는 경우
                                 </>,
                             ].map((text, idx) => (
-                                <div key={idx} className="flex items-start lg:items-center gap-[10px] lg:gap-[20px]">
+                                <Reveal
+                                    key={idx}
+                                    variant="fade-up"
+                                    delay={idx * 70}
+                                    className="flex items-start lg:items-center gap-[10px] lg:gap-[20px]"
+                                >
                                     <img
                                         src="/images/i_check_g.svg"
                                         alt="check"
@@ -79,18 +93,19 @@ export default function ConservativePage() {
                                     <span className=" text-[15px]/[24px] lg:text-[20px]/[25px] font-medium break-keep">
                                         {text}
                                     </span>
-                                </div>
+                                </Reveal>
                             ))}
                         </div>
-                    </div>
+                    </Reveal>
                 </div>
             </section>
 
-            {/* 배경 이미지 제거 bgImage="none" 전달 */}
             <Features
                 bgImage="none"
                 centerText={`충치를 치료하는 \n과정은 \n무엇인가요?`}
+                centerBoxClassName="!mt-[5px]"
                 mainTitle="충치 치료 과정"
+                sectionClass="lg:pt-[100px]"
                 items={[
                     {
                         id: '1',
@@ -118,17 +133,23 @@ export default function ConservativePage() {
                     },
                 ]}
             />
+
             <section className="w-full py-[50px] lg:py-[140px] px-5 sm:px-[36px] bg-primary">
                 <div className="max-w-[965px] mx-auto">
-                    <SectionHeading
-                        subtitle="DENTAL RESTORATIONS"
-                        title="보철물 소개"
-                        titleClassName="text-[25px]/[35px] lg:text-[35px] font-bold text-white text-center"
-                        subtitleClassName="text-[13px] font-normal mb-[2px] lg:text-[16px] text-white text-center"
-                    />
+                    <Reveal variant="fade-up">
+                        <SectionHeading
+                            subtitle="DENTAL RESTORATIONS"
+                            title="보철물 소개"
+                            titleClassName="text-[25px]/[35px] lg:text-[35px] font-bold text-white text-center"
+                            subtitleClassName="text-[13px] font-normal mb-[2px] lg:text-[16px] text-white text-center"
+                        />
+                    </Reveal>
 
                     {/* PC/태블릿용 통합 보철물 테이블 (md 이상에서만 노출) */}
-                    <div className="hidden md:block mt-8 lg:mt-[60px] rounded-[20px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] text-center border border-white/20 bg-[#6B8A7A]">
+                    <Reveal
+                        variant="fade-up"
+                        className="hidden md:block mt-8 lg:mt-[60px] rounded-[20px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] text-center border border-white/20 bg-[#6B8A7A]"
+                    >
                         <div className="grid grid-cols-2 bg-white">
                             <h3 className="py-[16px] lg:py-[22px] text-[18px] lg:text-[22px] font-bold text-primary-dark">
                                 인레이
@@ -212,17 +233,17 @@ export default function ConservativePage() {
                                         <span className="tracking-tight">pfm</span>
                                     </h4>
                                     <p className="mt-2 text-[15px]/[25px] font-medium opacity-90 break-keep">
-                                        겉은 치아 색 도자기, 속은 메탈로
+                                        겉은 치아 색 도자기, 속은 메탈로2
                                         <br />
                                         제작된 강도 좋은 크라운입니다
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Reveal>
 
                     {/* 모바일 전용 개별 카드 배치 레이아웃 (md 미만 노출) */}
-                    <div className="block md:hidden mt-8 flex flex-col gap-6 text-center">
+                    <Reveal variant="fade-up" className="block md:hidden mt-8 flex flex-col gap-6 text-center">
                         {/* 모바일 카드 1: 인레이 */}
                         <div className="rounded-[10px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] border border-white/20 bg-[#6B8A7A] pb-6">
                             <div className="bg-white py-[14px] text-[16px] font-bold text-primary-dark border-white">
@@ -312,13 +333,15 @@ export default function ConservativePage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Reveal>
                 </div>
             </section>
 
             <section className="w-full py-[60px] lg:py-[140px] px-[20px] bg-[#f9f9f9]">
                 <div className="max-w-[845px] mx-auto">
-                    <SectionHeading subtitle="ROOT CANAL" title="신경치료 과정" />
+                    <Reveal variant="fade-up">
+                        <SectionHeading subtitle="ROOT CANAL" title="신경치료 과정" />
+                    </Reveal>
 
                     <div className="grid grid-cols-2 lg:flex lg:justify-center gap-x-[20px] gap-y-[40px] lg:gap-[70px] mt-[40px] lg:mt-[43px]">
                         {[
@@ -339,7 +362,12 @@ export default function ConservativePage() {
                                 img: '/images/img_root_04.png',
                             },
                         ].map((item, idx) => (
-                            <div key={idx} className="relative flex justify-center w-full lg:w-auto">
+                            <Reveal
+                                key={idx}
+                                variant="scale-in"
+                                delay={idx * 100}
+                                className="relative flex justify-center w-full lg:w-auto"
+                            >
                                 <div className="flex flex-col items-center text-center w-[143px] lg:w-[160px]">
                                     <div className="relative w-[143px] h-[143px] lg:w-[160px] lg:h-[160px] rounded-full border-2 border-primary bg-white overflow-hidden mb-[15px] lg:mb-[10px]">
                                         <Image
@@ -393,7 +421,7 @@ export default function ConservativePage() {
                                         <img src="/images/arr_r_g.png" alt="다음" className="w-[8px] lg:w-[12px]" />
                                     </div>
                                 )}
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>

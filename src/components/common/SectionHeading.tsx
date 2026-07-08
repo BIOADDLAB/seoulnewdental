@@ -1,3 +1,5 @@
+import VerticalDivider from './VerticalDivider';
+
 interface SectionHeadingProps {
     title: string | React.ReactNode;
     subtitle?: string;
@@ -31,11 +33,11 @@ export default function SectionHeading({
                 {title}
             </h2>
 
-            {isLine && (
-                <span className={`mt-4 w-[1px] h-[15px] lg:h-[24px] ${isBg ? 'bg-white' : 'bg-primary-dark'}`} />
-            )}
+            {isLine && <VerticalDivider color={isBg ? 'bg-white' : 'bg-primary-dark'} spacing="top" />}
 
-            {desc && <p className={`mt-2 whitespace-pre-line break-keep ${descClassName}`}>{desc}</p>}
+            {desc && (
+                <p className={`${isLine ? '' : 'mt-2'} whitespace-pre-line break-keep ${descClassName}`}>{desc}</p>
+            )}
         </div>
     );
 }
