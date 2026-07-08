@@ -17,6 +17,7 @@ export default function ConservativePage() {
             <IntroBand
                 topLabel="SEOUL NEW DENTAL"
                 accent="DOCTOR CONSULTATION"
+                accentClassName="mb-[25px]"
                 isLine
                 desc={
                     <>
@@ -126,11 +127,10 @@ export default function ConservativePage() {
                         subtitleClassName="text-[13px] font-normal mb-[2px] lg:text-[16px] text-white text-center"
                     />
 
-                    {/* 보철물 테이블 전체 박스 */}
-                    <div className="mt-8 lg:mt-[60px] rounded-[10px] lg:rounded-[20px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] text-center border border-white/20">
-                        {/* PC/태블릿 전용 헤더 (md 이상에서만 노출) */}
-                        <div className="hidden md:grid grid-cols-2 bg-white">
-                            <h3 className="py-[16px] lg:py-[22px] text-[18px] lg:text-[22px] font-bold text-primary-dark ">
+                    {/* PC/태블릿용 통합 보철물 테이블 (md 이상에서만 노출) */}
+                    <div className="hidden md:block mt-8 lg:mt-[60px] rounded-[20px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] text-center border border-white/20 bg-[#6B8A7A]">
+                        <div className="grid grid-cols-2 bg-white">
+                            <h3 className="py-[16px] lg:py-[22px] text-[18px] lg:text-[22px] font-bold text-primary-dark">
                                 인레이
                             </h3>
                             <h3 className="py-[16px] lg:py-[22px] text-[18px] lg:text-[22px] font-bold text-primary-dark">
@@ -138,52 +138,40 @@ export default function ConservativePage() {
                             </h3>
                         </div>
 
-                        {/* 본문 그리드 영역 */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 bg-[#6B8A7A]">
-                            {/* 좌측 컬럼: 인레이 상세 영역 */}
-                            {/* #STYLE: 모바일 인레이 파트 상단 여백 제거(pt-0) 및 촘촘한 요소 간격 구성 */}
-                            <div className="flex flex-col gap-6 pb-6 pt-0 md:p-5 lg:p-[25px] md:border-r md:border-white/20 text-white">
-                                {/* 모바일 전용 헤더 라벨 (PC처럼 흰색 바탕 꽉 차게 변경 및 갭 타이트하게 밀착) */}
-                                <div className="block md:hidden w-full bg-white py-[14px] text-[16px] font-bold text-primary-dark border-b border-[#E5E7EB] ">
-                                    인레이
-                                </div>
-
-                                {/* 레진 인레이 */}
-                                <div className="flex flex-col items-center px-5 md:px-0">
-                                    <div className="w-full rounded-[8px] overflow-hidden bg-white/10">
+                        <div className="grid grid-cols-2">
+                            {/* PC 인레이 영역 */}
+                            <div className="flex flex-col gap-[45px] p-[25px] lg:p-[25px] border-r border-white/20 text-white">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[185px] rounded-[12px] overflow-hidden bg-white/10 relative">
                                         <img
                                             src="/images/img_in_01.png"
                                             alt="emax resin inlay"
-                                            className="w-full h-auto object-cover rounded-[12px]"
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    {/* #STYLE: 특수문자를 개별 span 태그로 분리 정렬 */}
-                                    <h4 className="mt-4 lg:mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
+                                    <h4 className="mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
                                         <span className="inline-block text-white mt-1 select-none">•</span>
                                         <span className="tracking-tight">emax resin inlay</span>
                                     </h4>
-                                    <p className="mt-1.5 text-[13px] lg:text-[15px]/[25px] font-medium opacity-90 break-keep">
+                                    <p className="mt-1.5 text-[15px]/[25px] font-medium opacity-90 break-keep">
                                         치아 색과 유사해
                                         <br />
                                         심미성이 우수하고 가성비가 좋습니다
                                     </p>
                                 </div>
-
-                                {/* 골드 인레이 */}
-                                <div className="flex flex-col items-center px-5 md:px-0">
-                                    <div className="w-full rounded-[8px] overflow-hidden bg-white/10">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[185px] rounded-[12px] overflow-hidden bg-white/10 relative">
                                         <img
                                             src="/images/img_in_03.png"
                                             alt="gold inlay"
-                                            className="w-full h-auto object-cover rounded-[12px]"
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    {/* #STYLE: 특수문자를 개별 span 태그로 분리 정렬 */}
-                                    <h4 className="mt-4 lg:mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
+                                    <h4 className="mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
                                         <span className="inline-block text-white mt-1 select-none">•</span>
                                         <span className="tracking-tight">gold inlay</span>
                                     </h4>
-                                    <p className="mt-1.5 text-[13px] lg:text-[15px]/[25px] font-medium opacity-90 break-keep">
+                                    <p className="mt-1.5 text-[15px]/[25px] font-medium opacity-90 break-keep">
                                         생체 친화성이 높고 강도가 뛰어나
                                         <br />
                                         깨질 우려가 적은 금 인레이입니다
@@ -191,50 +179,132 @@ export default function ConservativePage() {
                                 </div>
                             </div>
 
-                            {/* 우측 컬럼: 크라운 상세 영역 */}
-                            {/* #STYLE: 모바일 크라운 파트 상단 여백 제거(pt-0) 및 모바일 전용 상단 보더라인 갭 최적화 */}
-                            <div className="flex flex-col gap-6 pb-6 pt-0 md:p-5 lg:p-[25px] text-white border-t border-white/20 md:border-t-0 md:border-l md:border-white/20">
-                                {/* 모바일 전용 헤더 라벨 (PC처럼 흰색 바탕 꽉 차게 변경 및 갭 타이트하게 밀착) */}
-                                <div className="block md:hidden w-full bg-white py-[14px] text-[16px] font-bold text-primary-dark border-b border-[#E5E7EB] ">
-                                    크라운
-                                </div>
-
-                                {/* 지르코니아 */}
-                                <div className="flex flex-col items-center px-5 md:px-0">
-                                    <div className="w-full rounded-[8px] overflow-hidden bg-white/10">
+                            {/* PC 크라운 영역 */}
+                            <div className="flex flex-col gap-[45px] p-[25px] lg:p-[25px] text-white">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[185px] rounded-[12px] overflow-hidden bg-white/10 relative">
                                         <img
                                             src="/images/img_in_02.png"
                                             alt="zirconia"
-                                            className="w-full h-auto object-cover rounded-[12px]"
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    {/* #STYLE: 특수문자를 개별 span 태그로 분리 정렬 */}
-                                    <h4 className="mt-4 lg:mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
+                                    <h4 className="mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
                                         <span className="inline-block text-white mt-1 select-none">•</span>
                                         <span className="tracking-tight">zirconia</span>
                                     </h4>
-                                    <p className="mt-1.5 text-[13px] lg:text-[15px]/[25px] font-medium opacity-90 break-keep">
+                                    <p className="mt-1.5 text-[15px]/[25px] font-medium opacity-90 break-keep">
                                         세라믹 중 강도가 가장 우수하며,
                                         <br />
                                         치아색과 비슷해 인기가 많습니다
                                     </p>
                                 </div>
-
-                                {/* PFM 크라운 */}
-                                <div className="flex flex-col items-center px-5 md:px-0">
-                                    <div className="w-full rounded-[8px] overflow-hidden bg-white/10">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[185px] rounded-[12px] overflow-hidden bg-white/10 relative">
                                         <img
                                             src="/images/img_in_04.png"
                                             alt="pfm"
-                                            className="w-full h-auto object-cover rounded-[12px]"
+                                            className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    {/* #STYLE: 특수문자를 개별 span 태그로 분리 정렬 */}
-                                    <h4 className="mt-4 lg:mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
+                                    <h4 className="mt-[22px] text-[18px] lg:text-[25px] font-bold flex items-center justify-center gap-1">
                                         <span className="inline-block text-white mt-1 select-none">•</span>
                                         <span className="tracking-tight">pfm</span>
                                     </h4>
-                                    <p className="mt-2 text-[13px] lg:text-[15px]/[25px] font-medium opacity-90 break-keep">
+                                    <p className="mt-2 text-[15px]/[25px] font-medium opacity-90 break-keep">
+                                        겉은 치아 색 도자기, 속은 메탈로
+                                        <br />
+                                        제작된 강도 좋은 크라운입니다
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 모바일 전용 개별 카드 배치 레이아웃 (md 미만 노출) */}
+                    <div className="block md:hidden mt-8 flex flex-col gap-6 text-center">
+                        {/* 모바일 카드 1: 인레이 */}
+                        <div className="rounded-[10px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] border border-white/20 bg-[#6B8A7A] pb-6">
+                            <div className="bg-white py-[14px] text-[16px] font-bold text-primary-dark border-white">
+                                인레이
+                            </div>
+                            <div className="flex flex-col gap-6 px-5 pt-5 text-white">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[150px] aspect-[16/10] rounded-[12px] overflow-hidden bg-white/10 relative">
+                                        <img
+                                            src="/images/img_in_01.png"
+                                            alt="emax resin inlay"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <h4 className="mt-4 text-[18px] font-bold flex items-center justify-center gap-1">
+                                        <span className="inline-block text-white mt-1 select-none">•</span>
+                                        <span className="tracking-tight">emax resin inlay</span>
+                                    </h4>
+                                    <p className="mt-1.5 text-[13px] font-medium opacity-90 break-keep">
+                                        치아 색과 유사해
+                                        <br />
+                                        심미성이 우수하고 가성비가 좋습니다
+                                    </p>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[150px] aspect-[16/10] rounded-[12px] overflow-hidden bg-white/10 relative">
+                                        <img
+                                            src="/images/img_in_03.png"
+                                            alt="gold inlay"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <h4 className="mt-4 text-[18px] font-bold flex items-center justify-center gap-1">
+                                        <span className="inline-block text-white mt-1 select-none">•</span>
+                                        <span className="tracking-tight">gold inlay</span>
+                                    </h4>
+                                    <p className="mt-1.5 text-[13px] font-medium opacity-90 break-keep">
+                                        생체 친화성이 높고 강도가 뛰어나
+                                        <br />
+                                        깨질 우려가 적은 금 인레이입니다
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 모바일 카드 2: 크라운 */}
+                        <div className="rounded-[10px] overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.05)] border border-white/20 bg-[#6B8A7A] pb-6">
+                            <div className="bg-white py-[14px] text-[16px] font-bold text-primary-dark border border-white">
+                                크라운
+                            </div>
+                            <div className="flex flex-col gap-6 px-5 pt-5 text-white">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[150px] aspect-[16/10] rounded-[12px] overflow-hidden bg-white/10 relative">
+                                        <img
+                                            src="/images/img_in_02.png"
+                                            alt="zirconia"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <h4 className="mt-4 text-[18px] font-bold flex items-center justify-center gap-1">
+                                        <span className="inline-block text-white mt-1 select-none">•</span>
+                                        <span className="tracking-tight">zirconia</span>
+                                    </h4>
+                                    <p className="mt-1.5 text-[13px] font-medium opacity-90 break-keep">
+                                        세라믹 중 강도가 가장 우수하며,
+                                        <br />
+                                        치아색과 비슷해 인기가 많습니다
+                                    </p>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <div className="w-full h-[150px] aspect-[16/10] rounded-[12px] overflow-hidden bg-white/10 relative">
+                                        <img
+                                            src="/images/img_in_04.png"
+                                            alt="pfm"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <h4 className="mt-4 text-[18px] font-bold flex items-center justify-center gap-1">
+                                        <span className="inline-block text-white mt-1 select-none">•</span>
+                                        <span className="tracking-tight">pfm</span>
+                                    </h4>
+                                    <p className="mt-2 text-[13px] font-medium opacity-90 break-keep">
                                         겉은 치아 색 도자기, 속은 메탈로
                                         <br />
                                         제작된 강도 좋은 크라운입니다
