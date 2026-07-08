@@ -48,11 +48,19 @@ export default function Reveal({ children, variant = 'fade-up', delay = 0, class
                     trigger: el,
                     start: 'top 85%',
                     once: true,
+                    invalidateOnRefresh: true,
                 },
             });
         });
 
-        return () => ctx.revert();
+        // #ISSUE: 마운트 시점에 이미지/폰트 로딩이 안 끝나 트리거 위치가 어긋나는 문제
+        // #STYLE: 레이아웃이 확정된 뒤 한 번 더 재계산해서 위치를 바로잡음
+        const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+
+        return () => {
+            clearTimeout(refreshTimer);
+            ctx.revert();
+        };
     }, [variant, delay]);
 
     return (
