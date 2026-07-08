@@ -1,6 +1,3 @@
-// #ISSUE: PC 해상도(1024px~1400px)에서 헤더 로고와 히어로 텍스트의 좌측 정렬 어긋남, 태블릿 구간(520px~767px) 이미지 잘림 현상
-// #STYLE: 텍스트 및 프로그레스바 컨테이너를 헤더와 동일하게 max-w-[1400px] 및 lg:px-10으로 통일, min-[520px]로 모바일 이미지 상단 고정
-// #LINK: npm install swiper
 'use client';
 
 import React, { useState } from 'react';
@@ -22,6 +19,7 @@ export interface HeroSlideData {
     moImage: string;
     pcImagePos: string;
     moImagePos: string;
+    moTextPos?: string; // #STYLE: 모바일 텍스트 Y축 위치 커스텀 옵션 추가
 }
 
 const HERO_SLIDES: HeroSlideData[] = [
@@ -33,6 +31,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         moImage: '/images/hero_mo_x2_01.jpg',
         pcImagePos: 'lg:object-[75%_center]',
         moImagePos: 'object-[65%_center] min-[520px]:object-[65%_top]',
+        moTextPos: 'top-[94%]',
     },
     {
         id: 2,
@@ -42,6 +41,7 @@ const HERO_SLIDES: HeroSlideData[] = [
         moImage: '/images/hero_mo_x2_02.jpg',
         pcImagePos: 'lg:object-[80%_center]',
         moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
+        moTextPos: 'top-[94%]',
     },
     {
         id: 3,
@@ -52,15 +52,17 @@ const HERO_SLIDES: HeroSlideData[] = [
         moImage: '/images/hero_mo_x2_03.jpg',
         pcImagePos: 'lg:object-[80%_center]',
         moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
+        moTextPos: 'top-[88%]',
     },
     {
         id: 4,
         subtitle: 'Natural Teeth',
-        title: '자연치아의 가치를 지키는\n진료 오래도록 편안한\n결과를 제공합니다.',
+        title: '자연치아의 가치를 지키는 진료,\n오래도록 편안한\n결과를 제공합니다.',
         pcImage: '/images/hero_pc_x2_04.jpg',
         moImage: '/images/hero_mo_x2_04.jpg',
         pcImagePos: 'lg:object-[80%_center]',
         moImagePos: 'object-[75%_center] min-[520px]:object-[75%_top]',
+        moTextPos: 'top-[94%]',
     },
 ];
 
@@ -81,7 +83,7 @@ export default function MainHero() {
             >
                 {HERO_SLIDES.map((slide) => (
                     <SwiperSlide key={slide.id} className="relative w-full h-full overflow-hidden">
-                        {/* 모바일 배경 이미지 (md 미만에서만 노출) */}
+                        {/* 모바일 배경 이미지 */}
                         <div className="block md:hidden absolute inset-0 z-0">
                             <Image
                                 src={slide.moImage}
@@ -94,7 +96,7 @@ export default function MainHero() {
                             />
                         </div>
 
-                        {/* PC 배경 이미지 (md 이상부터 노출) */}
+                        {/* PC 배경 이미지 */}
                         <div className="hidden md:block absolute inset-0 z-0">
                             <Image
                                 src={slide.pcImage}
@@ -106,44 +108,11 @@ export default function MainHero() {
                             />
                         </div>
 
-                        {/* #ISSUE: 모바일에서만 맵솔루트 시키고 리팩토링때 확인 기존 코드 주석처리 - 추후 삭제 예정
-                         */}
-                        {/* <div
-                            className={`absolute w-full top-[94%] left-1/2 -translate-x-1/2 -translate-y-1/2  z-10 mx-auto max-w-[1400px] h-full flex flex-col ${
-                                slide.strongText ? 'pt-[2px]' : 'pt-[2px]'
-                            } md:pt-0 md:justify-center px-[20px] md:px-[40px] lg:px-10`}
-                        >
-                            <div className="hero-anim flex flex-col items-center text-center md:items-start md:text-left text-white md:text-[#776B5D]">
-                                <span className="font-accent text-[15px] md:text-[35px] uppercase opacity-80">
-                                    {slide.subtitle}
-                                </span>
-                                <h2 className="text-[25px]/[37px] md:text-[30px]/[45px] font-semibold whitespace-pre-line break-keep mt-3 md:mt-5.5 tracking-tight">
-                                    {slide.title}
-                                </h2>
-                                {slide.strongText && (
-                                    <strong className="block text-[25px]/[37px] md:text-[30px]/[45px] font-bold mt-2 md:mt-[22px]">
-                                        {slide.strongText}
-                                    </strong>
-                                )}
-                                <Link
-                                    href="/about"
-                                    className="w-[176px] h-[55px] flex justify-center items-center border border-white rounded-full text-[20px] font-bold mt-[29px] md:mt-[42px] md:w-[165px] md:h-[52px] md:border-[#776b5d]"
-                                >
-                                    Introduction
-                                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={1.5}
-                                            d="M9 5l7 7-7 7"
-                                        />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div> */}
-
                         {/* 텍스트 콘텐츠 영역 */}
-                        <div className="absolute top-[94%] left-1/2 w-full -translate-x-1/2 -translate-y-1/2 z-10 mx-auto max-w-[1400px] h-full flex flex-col px-[20px] md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 md:pt-0 md:justify-center md:px-[40px] lg:px-10">
+                        {/* #STYLE: slide.moTextPos 값 유동적 바인딩 처리 */}
+                        <div
+                            className={`absolute ${slide.moTextPos || 'top-[94%]'} left-1/2 w-full -translate-x-1/2 -translate-y-1/2 z-10 mx-auto max-w-[1400px] h-full flex flex-col px-[20px] md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 md:pt-0 md:justify-center md:px-[40px] lg:px-10`}
+                        >
                             <div className="hero-anim flex flex-col items-center text-center md:items-start md:text-left text-white md:text-[#776B5D]">
                                 <span className="font-accent text-[15px] md:text-[35px] uppercase opacity-80">
                                     {slide.subtitle}
@@ -175,7 +144,7 @@ export default function MainHero() {
                     </SwiperSlide>
                 ))}
 
-                {/* PC 전용 커스텀 프로그레스바 (헤더와 동일한 패딩 및 최대 너비 적용) */}
+                {/* PC 전용 커스텀 프로그레스바 */}
                 <div className="hidden lg:flex absolute bottom-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1400px] lg:px-10 z-20 pointer-events-none">
                     <div className="w-[588px] h-[3px] bg-white rounded-full relative overflow-hidden">
                         <div
@@ -186,7 +155,7 @@ export default function MainHero() {
                 </div>
             </Swiper>
 
-            {/* 정확한 진단과 따뜻한 진료 영역 - PC/모바일 공통 */}
+            {/* 하단 공통 영역 */}
             <div
                 className="w-full relative py-[30px] bg-cover bg-center text-center lg:py-[60px]"
                 style={{ backgroundImage: "url('/images/bg_stone.jpg')" }}

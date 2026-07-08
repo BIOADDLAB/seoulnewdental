@@ -7,11 +7,24 @@ import { usePathname } from 'next/navigation';
 import { HOSPITAL_INFO } from '@/constants/hospital';
 import { NAV_LINKS } from '@/constants/nav';
 
-// #TODO: 헤더아래 그림자 넣기
 export default function Header() {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [animateIn, setAnimateIn] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 10) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -38,22 +51,22 @@ export default function Header() {
         setIsMenuOpen(true);
     };
 
+    const getMenuLabel = (label: string) => {
+        if (label === '병원소개') return '서울NEW치과';
+        return label;
+    };
+
     return (
         <>
-            <header className="sticky top-0 z-40 w-full bg-primary text-white shadow-md">
+            {/* #STYLE: isScrolled 상태에 따라 shadow-md 토글 및 자연스러운 전환을 위한 transition-shadow 적용 */}
+            <header
+                className={`sticky top-0 z-40 w-full bg-primary text-white transition-shadow duration-300 ${
+                    isScrolled ? 'shadow-md' : 'shadow-none'
+                }`}
+            >
                 <div className="mx-auto flex h-[60px] max-w-[1400px] items-center justify-between pl-[30px] pr-[22px] lg:h-[95px] lg:px-10">
                     {/* 로고 영역 */}
                     <Link href="/" className="flex items-center gap-1.5 lg:gap-2">
-                        {/* #ISSUE: svg 렌더링 시 흐림 현상 발생하여 고해상도 png로 대체함 
-                        - 기존 Image 태그는 주석 처리하여 롤백 가능하도록 유지*/}
-
-                        {/* <Image
-                            src="/images/logo_w.svg"
-                            alt="서울NEW치과 로고"
-                            width={37}
-                            height={41}
-                            className="h-[38px] w-[34px] object-contain lg:h-[41px] lg:w-[37px]"
-                        /> */}
                         <Image
                             src="/images/logo_w_x4.png"
                             alt="서울NEW치과 로고"
@@ -76,7 +89,7 @@ export default function Header() {
                                                 pathname === link.href ? 'font-bold opacity-100' : 'opacity-80'
                                             }`}
                                         >
-                                            {link.label === '병원소개' ? '서울NEW치과' : link.label}
+                                            {getMenuLabel(link.label)}
                                         </Link>
                                     </li>
                                 ))}
@@ -101,9 +114,7 @@ export default function Header() {
             </header>
 
             {isMenuOpen && (
-                // 모바일 펼쳤을때
                 <div className="fixed inset-0 z-50 flex justify-end overflow-hidden lg:hidden">
-                    {/* 테블릿: 레이어 */}
                     <div
                         className={`fixed inset-0 hidden bg-black/40 transition-opacity duration-300 ease-in-out sm:block ${
                             animateIn ? 'opacity-100' : 'opacity-0'
@@ -136,15 +147,6 @@ export default function Header() {
                         {/* 로고 */}
                         <div className="flex items-center pl-[30px] pt-[100px]">
                             <Link href="/" onClick={handleClose} className="flex items-center gap-1.5">
-                                {/* #ISSUE: svg 렌더링 시 흐림 현상 발생하여 고해상도 png로 대체함 
-                                 - 기존 Image 태그는 주석 처리하여 롤백 가능하도록 유지*/}
-                                {/* <Image
-                                    src="/images/logo_b.svg"
-                                    alt="서울NEW치과 로고"
-                                    width={32}
-                                    height={32}
-                                    className="h-[38px] w-[34px] object-contain"
-                                /> */}
                                 <Image
                                     src="/images/logo_b_x4.png"
                                     alt="서울NEW치과 로고"
@@ -165,11 +167,11 @@ export default function Header() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={handleClose}
-                                    className={`text-[16px]  text-[#7c6959] transition-colors ${
+                                    className={`text-[16px] text-[#7c6959] transition-colors ${
                                         pathname === link.href ? 'font-bold' : 'font-medium'
                                     }`}
                                 >
-                                    {link.label === '병원소개' ? '서울NEW치과' : link.label}
+                                    {getMenuLabel(link.label)}
                                 </Link>
                             ))}
                         </nav>
