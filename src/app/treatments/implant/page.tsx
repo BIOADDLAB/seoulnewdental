@@ -56,7 +56,7 @@ function ShinyBadge({ src, alt }: { src: string; alt: string }) {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.disconnect(); // 한 번만 스르륵
+                    observer.disconnect();
                 }
             },
             { threshold: 0.5 },
@@ -72,7 +72,7 @@ function ShinyBadge({ src, alt }: { src: string; alt: string }) {
         >
             <Image src={src} alt={alt} fill sizes="173px" className="object-contain" />
             <div
-                className={`absolute top-0 bottom-0 w-[150%] bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] z-20 transition-transform duration-[1.2s] ease-in-out ${
+                className={`absolute top-0 bottom-0 w-[150%] bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-25deg] z-20 transition-transform duration-[2.2s] ease-in-out ${
                     inView ? 'translate-x-[100%]' : '-translate-x-[150%]'
                 }`}
                 style={{ transitionDelay: '0.2s' }}

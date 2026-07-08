@@ -124,7 +124,7 @@ export default function GeneralPage() {
                 </div>
             </section>
 
-            <section className="w-full bg-primary py-[65px] pb-[95px] px-[24px] lg:py-[100px]">
+            <section className="w-full bg-primary py-[70px] px-[24px] lg:py-[100px]">
                 <div className="mx-auto max-w-[900px] flex flex-col items-center text-center text-white">
                     <span className="font-accent text-[13px]/[13px] lg:text-[20px]/[13px] uppercase">WISDOM TEETH</span>
                     <h3 className="text-[25px]/[44px] font-semibold lg:text-[30px]/[44px] lg:font-medium mt-1">

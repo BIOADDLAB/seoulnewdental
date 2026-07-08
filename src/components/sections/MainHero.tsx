@@ -130,7 +130,12 @@ export default function MainHero() {
                                     className="w-[176px] h-[55px] flex justify-center items-center border border-white rounded-full text-[20px] font-bold mt-[29px] md:mt-[42px] md:w-[165px] md:h-[52px] md:border-[#776b5d]"
                                 >
                                     Introduction
-                                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg
+                                        className="w-4 h-4 ml-1 mt-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
                                         <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
