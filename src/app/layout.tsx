@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FloatingButton from '@/components/common/FloatingButton';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/constants/site';
 
 const suit = localFont({
     src: '../../public/fonts/SUIT-Variable.ttf',
@@ -30,14 +31,25 @@ const kccEunyoung = localFont({
 });
 
 export const metadata: Metadata = {
-    title: '서울NEW치과',
-    description: '정확한 진단과 따뜻한 진료로 함께하는 서울NEW치과',
+    metadataBase: new URL(SITE_URL),
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    verification: {
+        google: 'u3N_D2-sODe6Rhz3QwX4lEMqVQKhNaf92d0uVZlnE8c',
+        other: {
+            'naver-site-verification': 'c7e0df730c8b9325de87df0ccae369d810693cc9',
+        },
+    },
+    alternates: {
+        types: {
+            'application/rss+xml': `${SITE_URL}/rss.xml`,
+        },
+    },
     openGraph: {
-        title: '서울NEW치과',
-        description: '정확한 진단과 따뜻한 진료로 함께하는 서울NEW치과',
-        // #LINK: 링크 변경 필요
-        url: 'https://seoulnewdental.vercel.app/',
-        siteName: '서울NEW치과',
+        title: SITE_NAME,
+        description: SITE_DESCRIPTION,
+        url: SITE_URL,
+        siteName: SITE_NAME,
         locale: 'ko_KR',
         type: 'website',
         images: [{ url: '/og_img.png', width: 1200, height: 630 }],

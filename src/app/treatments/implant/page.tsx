@@ -196,9 +196,9 @@ export default function ImplantPage() {
                                         </h4>
                                     </div>
                                     <p className="mt-[6px] lg:pl-[13px] text-[15px]/[25px] lg:mt-[27px]  text-primary-dark break-keep text-center lg:text-left">
-                                        당일 임플란트는 발치부위에 감염이 없고
-                                        <br className="block lg:hidden" />
-                                        뼈의 형태가 잘 유지된 경우에 해당되며,
+                                        당일 임플란트는 발치부위에 감염이 없고 뼈의 형태가
+                                        <br className="block lg:block" />
+                                        잘 유지된 경우에 해당되며,
                                         <br className="block lg:hidden" />
                                         발치 당일 바로 임플란트 식립이 가능합니다.
                                     </p>
