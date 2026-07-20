@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ContactSection from '@/components/sections/ContactSection';
 import MainHero from '@/components/sections/MainHero';
+import MainPopup from '@/components/common/MainPopup';
 import SectionHeading from '../components/common/SectionHeading';
 import Image from 'next/image';
 
@@ -78,6 +79,7 @@ export default function Home() {
 
     return (
         <main>
+            <MainPopup />
             <MainHero />
 
             <section ref={sectionRef} className="w-full py-[62px] lg:py-[150px] bg-white overflow-hidden">
